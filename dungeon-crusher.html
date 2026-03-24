@@ -1,404 +1,400 @@
 <!DOCTYPE html>
 <html lang="ru">
-	<head>
-		<meta charset="UTF-8">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				<title>Dungeon Crusher Bot — DC Bots</title>
-				<style>
-					* {
-					margin: 0;
-					padding: 0;
-					box-sizing: border-box;
-					}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dungeon Crusher Bot — DC Bots</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%235a67d8'/%3E%3Ctext x='50' y='67' text-anchor='middle' fill='white' font-size='50' font-weight='bold'%3EDC%3C/text%3E%3C/svg%3E">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-					body {
-					font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
-					background: #0a0a0a;
-					color: #e0e0e0;
-					line-height: 1.5;
-					}
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.5;
+        }
 
-					.container {
-					max-width: 1100px;
-					margin: 0 auto;
-					padding: 0 20px;
-					}
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-					.header {
-					padding: 20px 0;
-					border-bottom: 1px solid #2a2a2a;
-					background: #0a0a0a;
-					position: sticky;
-					top: 0;
-					z-index: 100;
-					}
+        .header {
+            padding: 20px 0;
+            border-bottom: 1px solid #2a2a2a;
+            background: #0a0a0a;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-					.header-inner {
-					display: flex;
-					justify-content: space-between;
-					align-items: center;
-					flex-wrap: wrap;
-					gap: 20px;
-					}
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
 
-					.logo {
-					font-size: 24px;
-					font-weight: bold;
-					color: #5a67d8;
-					text-decoration: none;
-					}
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #5a67d8;
+            text-decoration: none;
+        }
 
-					.logo span {
-					color: #e0e0e0;
-					}
+        .logo span {
+            color: #e0e0e0;
+        }
 
-					.nav {
-					display: flex;
-					gap: 30px;
-					flex-wrap: wrap;
-					}
+        .nav {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
 
-					.nav a {
-					color: #e0e0e0;
-					text-decoration: none;
-					transition: color 0.2s;
-					}
+        .nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
 
-					.nav a:hover {
-					color: #5a67d8;
-					}
+        .nav a:hover {
+            color: #5a67d8;
+        }
 
-					.btn {
-					display: inline-block;
-					padding: 12px 28px;
-					border-radius: 8px;
-					text-decoration: none;
-					font-weight: 500;
-					transition: all 0.2s;
-					cursor: pointer;
-					border: none;
-					}
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+        }
 
-					.btn-primary {
-					background: #5a67d8;
-					color: white;
-					}
+        .btn-primary {
+            background: #5a67d8;
+            color: white;
+        }
 
-					.btn-primary:hover {
-					background: #6c63ff;
-					transform: translateY(-2px);
-					}
+        .btn-primary:hover {
+            background: #6c63ff;
+            transform: translateY(-2px);
+        }
 
-					.btn-large {
-					padding: 14px 36px;
-					font-size: 16px;
-					}
+        .btn-large {
+            padding: 14px 36px;
+            font-size: 16px;
+        }
 
-					.hero {
-					padding: 60px 0;
-					text-align: center;
-					}
+        .hero {
+            padding: 60px 0;
+            text-align: center;
+        }
 
-					.hero h1 {
-					font-size: 42px;
-					margin-bottom: 20px;
-					color: white;
-					}
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: white;
+        }
 
-					.hero p {
-					font-size: 18px;
-					color: #a0a0a0;
-					max-width: 700px;
-					margin: 0 auto;
-					}
+        .hero p {
+            font-size: 18px;
+            color: #a0a0a0;
+            max-width: 700px;
+            margin: 0 auto;
+        }
 
-					.section {
-					padding: 60px 0;
-					border-top: 1px solid #2a2a2a;
-					}
+        .section {
+            padding: 60px 0;
+            border-top: 1px solid #2a2a2a;
+        }
 
-					.section-title {
-					font-size: 28px;
-					margin-bottom: 30px;
-					color: white;
-					text-align: center;
-					}
+        .section-title {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: white;
+            text-align: center;
+        }
 
-					.grid {
-					display: grid;
-					grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-					gap: 30px;
-					}
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
 
-					.card {
-					background: #141414;
-					border: 1px solid #2a2a2a;
-					border-radius: 16px;
-					padding: 24px;
-					}
+        .card {
+            background: #141414;
+            border: 1px solid #2a2a2a;
+            border-radius: 16px;
+            padding: 24px;
+        }
 
-					.card h3 {
-					margin-bottom: 12px;
-					color: #5a67d8;
-					}
+        .card h3 {
+            margin-bottom: 12px;
+            color: #5a67d8;
+        }
 
-					.card p {
-					color: #a0a0a0;
-					font-size: 14px;
-					}
+        .card p {
+            color: #a0a0a0;
+            font-size: 14px;
+        }
 
-					.price-card {
-					background: #141414;
-					border: 1px solid #2a2a2a;
-					border-radius: 16px;
-					padding: 24px;
-					text-align: center;
-					transition: transform 0.2s, border-color 0.2s;
-					}
+        .price-card {
+            background: #141414;
+            border: 1px solid #2a2a2a;
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            transition: transform 0.2s, border-color 0.2s;
+        }
 
-					.price-card:hover {
-					transform: translateY(-5px);
-					border-color: #5a67d8;
-					}
+        .price-card:hover {
+            transform: translateY(-5px);
+            border-color: #5a67d8;
+        }
 
-					.price-card h3 {
-					font-size: 24px;
-					margin-bottom: 16px;
-					}
+        .price-card h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
 
-					.price {
-					font-size: 36px;
-					font-weight: bold;
-					color: #5a67d8;
-					margin: 20px 0;
-					}
+        .price {
+            font-size: 36px;
+            font-weight: bold;
+            color: #5a67d8;
+            margin: 20px 0;
+        }
 
-					.price small {
-					font-size: 14px;
-					color: #a0a0a0;
-					}
+        .price small {
+            font-size: 14px;
+            color: #a0a0a0;
+        }
 
-					.price-list {
-					list-style: none;
-					margin: 20px 0;
-					}
+        .price-list {
+            list-style: none;
+            margin: 20px 0;
+        }
 
-					.price-list li {
-					padding: 8px 0;
-					color: #b0b0b0;
-					}
+        .price-list li {
+            padding: 8px 0;
+            color: #b0b0b0;
+        }
 
-					.price-list li.highlight {
-					color: #5a67d8;
-					}
+        .price-list li.highlight {
+            color: #5a67d8;
+        }
 
-					.faq-grid {
-					display: grid;
-					grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-					gap: 20px;
-					margin-top: 30px;
-					}
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
 
-					.faq-item {
-					background: #141414;
-					border: 1px solid #2a2a2a;
-					border-radius: 12px;
-					padding: 20px;
-					}
+        .faq-item {
+            background: #141414;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 20px;
+        }
 
-					.faq-item h4 {
-					color: #5a67d8;
-					margin-bottom: 10px;
-					}
+        .faq-item h4 {
+            color: #5a67d8;
+            margin-bottom: 10px;
+        }
 
-					.faq-item p {
-					color: #a0a0a0;
-					font-size: 14px;
-					}
+        .faq-item p {
+            color: #a0a0a0;
+            font-size: 14px;
+        }
 
-					.footer {
-					border-top: 1px solid #2a2a2a;
-					padding: 40px 0;
-					text-align: center;
-					color: #6c6c6c;
-					margin-top: 40px;
-					}
+        .footer {
+            border-top: 1px solid #2a2a2a;
+            padding: 40px 0;
+            text-align: center;
+            color: #6c6c6c;
+            margin-top: 40px;
+        }
 
-					.footer a {
-					color: #5a67d8;
-					text-decoration: none;
-					}
+        .footer a {
+            color: #5a67d8;
+            text-decoration: none;
+        }
 
-					@media (max-width: 768px) {
-					.hero h1 {
-					font-size: 28px;
-					}
-					.section-title {
-					font-size: 24px;
-					}
-					.header-inner {
-					flex-direction: column;
-					text-align: center;
-					}
-					.nav {
-					justify-content: center;
-					}
-					<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%235a67d8'/%3E%3Ctext x='50' y='67' text-anchor='middle' fill='white' font-size='50' font-weight='bold'%3EDC%3C/text%3E%3C/svg%3E">
-					}
-				</style>
-			</head>
-	<body>
-		<header class="header">
-			<div class="container header-inner">
-				<a href="/" class="logo">
-					DC<span>Bots</span>
-				</a>
-				<div class="nav">
-					<a href="/">Главная</a>
-					<a href="dungeon-crusher.html">Dungeon Crusher</a>
-					<a href="support.html">Поддержка</a>
-					<a href="https://t.me/alibobao" target="_blank">Telegram</a>
-				</div>
-			</div>
-		</header>
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+            .section-title {
+                font-size: 24px;
+            }
+            .header-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+            .nav {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">DC<span>Bots</span></a>
+            <div class="nav">
+                <a href="index.html">Главная</a>
+                <a href="dungeon-crusher.html">Dungeon Crusher</a>
+                <a href="support.html">Поддержка</a>
+                <a href="https://t.me/alibobao" target="_blank">Telegram</a>
+            </div>
+        </div>
+    </header>
 
-		<section class="hero">
-			<div class="container">
-				<h1>⚔️ Dungeon Crusher Bot</h1>
-				<p>Полная автоматизация осад с интеллектуальной системой обучения. Бот сам адаптируется под ваш стиль игры и предсказывает появление боссов.</p>
-				<div style="margin-top: 30px;">
-					<a href="https://t.me/alibobao" class="btn btn-primary btn-large" target="_blank">Купить лицензию →</a>
-				</div>
-			</div>
-		</section>
+    <section class="hero">
+        <div class="container">
+            <h1>⚔️ Dungeon Crusher Bot</h1>
+            <p>Полная автоматизация осад с интеллектуальной системой обучения. Бот сам адаптируется под ваш стиль игры и предсказывает появление боссов.</p>
+            <div style="margin-top: 30px;">
+                <a href="https://t.me/alibobao" class="btn btn-primary btn-large" target="_blank">Купить лицензию →</a>
+            </div>
+        </div>
+    </section>
 
-		<section class="section">
-			<div class="container">
-				<h2 class="section-title">🧠 ИИ-директор v2.0</h2>
-				<div class="grid">
-					<div class="card">
-						<h3>📈 Самообучение</h3>
-						<p>Бот анализирует ваши осады, запоминает успешные паттерны и становится умнее с каждой сессией.</p>
-					</div>
-					<div class="card">
-						<h3>🔮 Предсказание боссов</h3>
-						<p>Анализирует временные паттерны и сообщает, когда появится следующий босс с точностью до минут.</p>
-					</div>
-					<div class="card">
-						<h3>🎯 Адаптивная стратегия</h3>
-						<p>Автоматически выбирает агрессивную, сбалансированную или экономичную тактику под ваши задачи.</p>
-					</div>
-				</div>
-			</div>
-		</section>
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">🧠 ИИ-директор v2.0</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>📈 Самообучение</h3>
+                    <p>Бот анализирует ваши осады, запоминает успешные паттерны и становится умнее с каждой сессией.</p>
+                </div>
+                <div class="card">
+                    <h3>🔮 Предсказание боссов</h3>
+                    <p>Анализирует временные паттерны и сообщает, когда появится следующий босс с точностью до минут.</p>
+                </div>
+                <div class="card">
+                    <h3>🎯 Адаптивная стратегия</h3>
+                    <p>Автоматически выбирает агрессивную, сбалансированную или экономичную тактику под ваши задачи.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-		<section class="section">
-			<div class="container">
-				<h2 class="section-title">⚙️ Основные возможности</h2>
-				<div class="grid">
-					<div class="card">
-						<h3>🔄 Полный цикл осады</h3>
-						<p>Выследить → атака → закрытие → назад. Бот делает всё сам, вам остается только запустить.</p>
-					</div>
-					<div class="card">
-						<h3>👁️ Распознавание кнопок</h3>
-						<p>OpenCV ищет кнопки на экране даже при смене разрешения или темы игры.</p>
-					</div>
-					<div class="card">
-						<h3>⛔ Черный список мобов</h3>
-						<p>Укажите имена мобов, которых не нужно атаковать — бот будет их пропускать.</p>
-					</div>
-					<div class="card">
-						<h3>🛡️ Автовосстановление</h3>
-						<p>При зависании бот сам восстанавливается и продолжает работу.</p>
-					</div>
-					<div class="card">
-						<h3>📊 Статистика и графики</h3>
-						<p>Отслеживайте эффективность, количество осад, убитых боссов и заработанные ресурсы.</p>
-					</div>
-					<div class="card">
-						<h3>🎨 Современный интерфейс</h3>
-						<p>Минималистичный дизайн, удобная навигация, вкладка AI Analytics с графиками обучения.</p>
-					</div>
-				</div>
-			</div>
-		</section>
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">⚙️ Основные возможности</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>🔄 Полный цикл осады</h3>
+                    <p>Выследить → атака → закрытие → назад. Бот делает всё сам, вам остается только запустить.</p>
+                </div>
+                <div class="card">
+                    <h3>👁️ Распознавание кнопок</h3>
+                    <p>OpenCV ищет кнопки на экране даже при смене разрешения или темы игры.</p>
+                </div>
+                <div class="card">
+                    <h3>⛔ Черный список мобов</h3>
+                    <p>Укажите имена мобов, которых не нужно атаковать — бот будет их пропускать.</p>
+                </div>
+                <div class="card">
+                    <h3>🛡️ Автовосстановление</h3>
+                    <p>При зависании бот сам восстанавливается и продолжает работу.</p>
+                </div>
+                <div class="card">
+                    <h3>📊 Статистика и графики</h3>
+                    <p>Отслеживайте эффективность, количество осад, убитых боссов и заработанные ресурсы.</p>
+                </div>
+                <div class="card">
+                    <h3>🎨 Современный интерфейс</h3>
+                    <p>Минималистичный дизайн, удобная навигация, вкладка AI Analytics с графиками обучения.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-		<section class="section">
-			<div class="container">
-				<h2 class="section-title">💎 Выберите тариф</h2>
-				<div class="grid">
-					<div class="price-card">
-						<h3>1 месяц</h3>
-						<div class="price">499 ₽</div>
-						<ul class="price-list">
-							<li>✓ Все функции бота</li>
-							<li>✓ ИИ-директор v2.0</li>
-							<li>✓ Поддержка в Telegram</li>
-							<li>✓ Обновления на период лицензии</li>
-						</ul>
-						<a href="https://t.me/alibobao" class="btn btn-primary" target="_blank">Купить</a>
-					</div>
-					<div class="price-card">
-						<h3>3 месяца</h3>
-						<div class="price">1 199 ₽</div>
-						<ul class="price-list">
-							<li>✓ Все функции бота</li>
-							<li>✓ ИИ-директор v2.0</li>
-							<li>✓ Поддержка в Telegram</li>
-							<li>✓ Обновления на период лицензии</li>
-							<li class="highlight">✓ Экономия 300 ₽</li>
-						</ul>
-						<a href="https://t.me/alibobao" class="btn btn-primary" target="_blank">Купить</a>
-					</div>
-					<div class="price-card">
-						<h3>Навсегда</h3>
-						<div class="price">2 999 ₽</div>
-						<ul class="price-list">
-							<li>✓ Все функции бота</li>
-							<li>✓ ИИ-директор v2.0</li>
-							<li>✓ Бессрочная поддержка</li>
-							<li>✓ Все будущие обновления</li>
-							<li class="highlight">✓ Лучшая цена</li>
-						</ul>
-						<a href="https://t.me/alibobao" class="btn btn-primary" target="_blank">Купить</a>
-					</div>
-				</div>
-				<p style="text-align: center; margin-top: 30px; color: #a0a0a0;">После оплаты вы получите лицензионный ключ и ссылку на скачивание</p>
-			</div>
-		</section>
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">💎 Выберите тариф</h2>
+            <div class="grid">
+                <div class="price-card">
+                    <h3>1 месяц</h3>
+                    <div class="price">499 ₽</div>
+                    <ul class="price-list">
+                        <li>✓ Все функции бота</li>
+                        <li>✓ ИИ-директор v2.0</li>
+                        <li>✓ Поддержка в Telegram</li>
+                        <li>✓ Обновления на период лицензии</li>
+                    </ul>
+                    <a href="https://t.me/alibobao" class="btn btn-primary" target="_blank">Купить</a>
+                </div>
+                <div class="price-card">
+                    <h3>3 месяца</h3>
+                    <div class="price">1 199 ₽</div>
+                    <ul class="price-list">
+                        <li>✓ Все функции бота</li>
+                        <li>✓ ИИ-директор v2.0</li>
+                        <li>✓ Поддержка в Telegram</li>
+                        <li>✓ Обновления на период лицензии</li>
+                        <li class="highlight">✓ Экономия 300 ₽</li>
+                    </ul>
+                    <a href="https://t.me/alibobao" class="btn btn-primary" target="_blank">Купить</a>
+                </div>
+                <div class="price-card">
+                    <h3>Навсегда</h3>
+                    <div class="price">2 999 ₽</div>
+                    <ul class="price-list">
+                        <li>✓ Все функции бота</li>
+                        <li>✓ ИИ-директор v2.0</li>
+                        <li>✓ Бессрочная поддержка</li>
+                        <li>✓ Все будущие обновления</li>
+                        <li class="highlight">✓ Лучшая цена</li>
+                    </ul>
+                    <a href="https://t.me/alibobao" class="btn btn-primary" target="_blank">Купить</a>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 30px; color: #a0a0a0;">После оплаты вы получите лицензионный ключ и ссылку на скачивание</p>
+        </div>
+    </section>
 
-		<section class="section" style="background: #0f0f0f;">
-			<div class="container">
-				<h2 class="section-title">❓ Часто задаваемые вопросы</h2>
-				<div class="faq-grid">
-					<div class="faq-item">
-						<h4>Нужно ли устанавливать Python?</h4>
-						<p>Нет. Бот поставляется в виде готового EXE файла — установил и запустил.</p>
-					</div>
-					<div class="faq-item">
-						<h4>Блокируют ли игру за использование бота?</h4>
-						<p>Бот эмулирует действия мыши и клавиатуры, не вмешивается в процесс игры. Риск минимален.</p>
-					</div>
-					<div class="faq-item">
-						<h4>Как получить ключ после оплаты?</h4>
-						<p>Ключ приходит в Telegram в течение 5-15 минут после оплаты.</p>
-					</div>
-					<div class="faq-item">
-						<h4>Можно ли перенести лицензию на другой ПК?</h4>
-						<p>Лицензия привязывается к HWID компьютера. При смене ПК — обратитесь в поддержку.</p>
-					</div>
-				</div>
-			</div>
-		</section>
+    <section class="section" style="background: #0f0f0f;">
+        <div class="container">
+            <h2 class="section-title">❓ Часто задаваемые вопросы</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>Нужно ли устанавливать Python?</h4>
+                    <p>Нет. Бот поставляется в виде готового EXE файла — установил и запустил.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Блокируют ли игру за использование бота?</h4>
+                    <p>Бот эмулирует действия мыши и клавиатуры, не вмешивается в процесс игры. Риск минимален.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Как получить ключ после оплаты?</h4>
+                    <p>Ключ приходит в Telegram в течение 5-15 минут после оплаты.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Можно ли перенести лицензию на другой ПК?</h4>
+                    <p>Лицензия привязывается к HWID компьютера. При смене ПК — обратитесь в поддержку.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-		<footer class="footer">
-			<div class="container">
-				<p>© 2025 DC Bots. Dungeon Crusher Bot — неофициальное ПО, не связано с разработчиками игры.</p>
-				<p style="margin-top: 10px;">
-					По всем вопросам: <a href="https://t.me/alibobao" target="_blank">@alibobao</a>
-				</p>
-			</div>
-		</footer>
-	</body>
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 DC Bots. Dungeon Crusher Bot — неофициальное ПО, не связано с разработчиками игры.</p>
+            <p style="margin-top: 10px;">По всем вопросам: <a href="https://t.me/alibobao" target="_blank">@alibobao</a></p>
+        </div>
+    </footer>
+</body>
 </html>
