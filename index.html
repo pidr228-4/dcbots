@@ -1,0 +1,412 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<title>DC Bots — Автоматизация для игр</title>
+				<style>
+					* {
+					margin: 0;
+					padding: 0;
+					box-sizing: border-box;
+					}
+
+					body {
+					font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+					background: #0a0a0a;
+					color: #e0e0e0;
+					line-height: 1.5;
+					}
+
+					.container {
+					max-width: 1200px;
+					margin: 0 auto;
+					padding: 0 20px;
+					}
+
+					.header {
+					padding: 20px 0;
+					border-bottom: 1px solid #2a2a2a;
+					background: #0a0a0a;
+					position: sticky;
+					top: 0;
+					z-index: 100;
+					}
+
+					.header-inner {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					flex-wrap: wrap;
+					gap: 20px;
+					}
+
+					.logo {
+					font-size: 24px;
+					font-weight: bold;
+					color: #5a67d8;
+					text-decoration: none;
+					}
+
+					.logo span {
+					color: #e0e0e0;
+					}
+
+					.nav {
+					display: flex;
+					gap: 30px;
+					flex-wrap: wrap;
+					}
+
+					.nav a {
+					color: #e0e0e0;
+					text-decoration: none;
+					transition: color 0.2s;
+					}
+
+					.nav a:hover {
+					color: #5a67d8;
+					}
+
+					.btn {
+					display: inline-block;
+					padding: 12px 28px;
+					border-radius: 8px;
+					text-decoration: none;
+					font-weight: 500;
+					transition: all 0.2s;
+					cursor: pointer;
+					border: none;
+					}
+
+					.btn-primary {
+					background: #5a67d8;
+					color: white;
+					}
+
+					.btn-primary:hover {
+					background: #6c63ff;
+					transform: translateY(-2px);
+					}
+
+					.btn-outline {
+					border: 1px solid #5a67d8;
+					color: #5a67d8;
+					background: transparent;
+					}
+
+					.btn-outline:hover {
+					background: #5a67d8;
+					color: white;
+					}
+
+					.hero {
+					padding: 80px 0;
+					text-align: center;
+					}
+
+					.hero h1 {
+					font-size: 48px;
+					margin-bottom: 20px;
+					background: linear-gradient(135deg, #5a67d8, #9f7aea);
+					-webkit-background-clip: text;
+					background-clip: text;
+					color: transparent;
+					}
+
+					.hero p {
+					font-size: 18px;
+					color: #a0a0a0;
+					max-width: 600px;
+					margin: 0 auto 30px;
+					}
+
+					.hero-buttons {
+					display: flex;
+					gap: 15px;
+					justify-content: center;
+					flex-wrap: wrap;
+					}
+
+					.bots {
+					padding: 60px 0;
+					}
+
+					.section-title {
+					text-align: center;
+					font-size: 32px;
+					margin-bottom: 40px;
+					color: white;
+					}
+
+					.grid {
+					display: grid;
+					grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+					gap: 30px;
+					}
+
+					.bot-card {
+					background: #141414;
+					border: 1px solid #2a2a2a;
+					border-radius: 16px;
+					padding: 24px;
+					transition: transform 0.2s, border-color 0.2s;
+					}
+
+					.bot-card:hover {
+					transform: translateY(-5px);
+					border-color: #5a67d8;
+					}
+
+					.bot-icon {
+					font-size: 48px;
+					margin-bottom: 16px;
+					}
+
+					.bot-card h3 {
+					font-size: 22px;
+					margin-bottom: 12px;
+					color: white;
+					}
+
+					.bot-card p {
+					color: #a0a0a0;
+					margin-bottom: 20px;
+					font-size: 14px;
+					}
+
+					.bot-features {
+					list-style: none;
+					margin-bottom: 24px;
+					}
+
+					.bot-features li {
+					padding: 6px 0;
+					color: #b0b0b0;
+					font-size: 13px;
+					display: flex;
+					align-items: center;
+					gap: 8px;
+					}
+
+					.bot-features li::before {
+					content: "✓";
+					color: #5a67d8;
+					font-weight: bold;
+					}
+
+					.price {
+					font-size: 24px;
+					font-weight: bold;
+					color: #5a67d8;
+					margin-bottom: 16px;
+					}
+
+					.price small {
+					font-size: 14px;
+					color: #a0a0a0;
+					font-weight: normal;
+					}
+
+					.bot-link {
+					display: inline-block;
+					padding: 10px 20px;
+					background: #2a2a2a;
+					color: white;
+					text-decoration: none;
+					border-radius: 8px;
+					transition: background 0.2s;
+					}
+
+					.bot-link:hover {
+					background: #5a67d8;
+					}
+
+					.features {
+					background: #0f0f0f;
+					padding: 60px 0;
+					}
+
+					.features-grid {
+					display: grid;
+					grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+					gap: 30px;
+					}
+
+					.feature-item {
+					text-align: center;
+					padding: 20px;
+					}
+
+					.feature-icon {
+					font-size: 40px;
+					margin-bottom: 16px;
+					}
+
+					.feature-item h4 {
+					margin-bottom: 10px;
+					color: white;
+					}
+
+					.feature-item p {
+					color: #a0a0a0;
+					font-size: 14px;
+					}
+
+					.footer {
+					border-top: 1px solid #2a2a2a;
+					padding: 40px 0;
+					text-align: center;
+					color: #6c6c6c;
+					font-size: 14px;
+					}
+
+					.footer a {
+					color: #5a67d8;
+					text-decoration: none;
+					}
+
+					@media (max-width: 768px) {
+					.hero h1 {
+					font-size: 32px;
+					}
+					.hero p {
+					font-size: 16px;
+					}
+					.section-title {
+					font-size: 26px;
+					}
+					.header-inner {
+					flex-direction: column;
+					text-align: center;
+					}
+					}
+				</style>
+			</head>
+	<body>
+		<header class="header">
+			<div class="container header-inner">
+				<a href="/" class="logo">
+					DC<span>Bots</span>
+				</a>
+				<div class="nav">
+					<a href="/">Главная</a>
+					<a href="/dungeon-crusher">Dungeon Crusher</a>
+					<a href="/support">Поддержка</a>
+					<a href="https://t.me/alibobao" target="_blank">Telegram</a>
+				</div>
+			</div>
+		</header>
+
+		<section class="hero">
+			<div class="container">
+				<h1>Автоматизация, которая работает</h1>
+				<p>Боты для игр, маркетплейсов и повторяющихся задач. Экономьте часы каждый день.</p>
+				<div class="hero-buttons">
+					<a href="#bots" class="btn btn-primary">Выбрать бота</a>
+					<a href="https://t.me/alibobao" class="btn btn-outline" target="_blank">Связаться в Telegram</a>
+				</div>
+			</div>
+		</section>
+
+		<section id="bots" class="bots">
+			<div class="container">
+				<h2 class="section-title">Наши решения</h2>
+				<div class="grid">
+					<div class="bot-card">
+						<div class="bot-icon">⚔️</div>
+						<h3>Dungeon Crusher Bot</h3>
+						<p>Автоматическое прохождение осад, распознавание боссов, умный черный список. С ИИ-директором, который учится на ваших действиях.</p>
+						<ul class="bot-features">
+							<li>Авто-осады с полным циклом</li>
+							<li>Распознавание кнопок через OpenCV</li>
+							<li>ИИ-директор v2.0 (обучение и предсказания)</li>
+							<li>Черный список мобов</li>
+							<li>Автовосстановление при зависаниях</li>
+						</ul>
+						<div class="price">
+							от 499 ₽ <small>/ месяц</small>
+						</div>
+						<a href="/dungeon-crusher" class="bot-link">Подробнее →</a>
+					</div>
+
+					<div class="bot-card">
+						<div class="bot-icon">📦</div>
+						<h3>Avito Bot</h3>
+						<p>Автоматизация для продавцов на Avito. Поднятие объявлений, мониторинг конкурентов, авто-ответы.</p>
+						<ul class="bot-features">
+							<li>Авто-поднятие объявлений</li>
+							<li>Мониторинг новых заказов</li>
+							<li>Авто-ответы на сообщения</li>
+							<li>Статистика просмотров</li>
+						</ul>
+						<div class="price">Скоро</div>
+						<a href="https://t.me/alibobao" class="bot-link" target="_blank">Узнать о выходе →</a>
+					</div>
+
+					<div class="bot-card">
+						<div class="bot-icon">🖱️</div>
+						<h3>Universal Macro Bot</h3>
+						<p>Конструктор макросов для любых игр и программ. Записывайте действия и запускайте в цикле.</p>
+						<ul class="bot-features">
+							<li>Запись последовательностей</li>
+							<li>Поиск изображений на экране</li>
+							<li>Условные операторы</li>
+							<li>Запуск по расписанию</li>
+						</ul>
+						<div class="price">Скоро</div>
+						<a href="https://t.me/alibobao" class="bot-link" target="_blank">Узнать о выходе →</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="features">
+			<div class="container">
+				<h2 class="section-title">Почему выбирают нас</h2>
+				<div class="features-grid">
+					<div class="feature-item">
+						<div class="feature-icon">🔒</div>
+						<h4>Безопасность</h4>
+						<p>Лицензия привязывается к вашему компьютеру. Защита от взлома и подделок.</p>
+					</div>
+					<div class="feature-item">
+						<div class="feature-icon">⚡</div>
+						<h4>Быстрая поддержка</h4>
+						<p>Отвечаем в Telegram в течение часа. Помогаем с настройкой и решаем проблемы.</p>
+					</div>
+					<div class="feature-item">
+						<div class="feature-icon">🔄</div>
+						<h4>Регулярные обновления</h4>
+						<p>Постоянно улучшаем ботов, добавляем новые функции и адаптируем под изменения.</p>
+					</div>
+					<div class="feature-item">
+						<div class="feature-icon">💻</div>
+						<h4>Простота использования</h4>
+						<p>Готовый EXE файл, не требует установки Python. Интуитивный интерфейс.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section style="padding: 60px 0; text-align: center;">
+			<div class="container">
+				<h2 class="section-title">Остались вопросы?</h2>
+				<p style="margin-bottom: 30px; color: #a0a0a0;">Напишите нам в Telegram — ответим на все вопросы</p>
+				<a href="https://t.me/alibobao" class="btn btn-primary" target="_blank">Написать @alibobao</a>
+			</div>
+		</section>
+
+		<footer class="footer">
+			<div class="container">
+				<p>© 2025 DC Bots. Все права защищены.</p>
+				<p style="margin-top: 10px;">
+					<a href="/">Главная</a> |
+					<a href="/dungeon-crusher">Dungeon Crusher</a> |
+					<a href="/support">Поддержка</a> |
+					<a href="https://t.me/alibobao">Telegram</a>
+				</p>
+			</div>
+		</footer>
+	</body>
+</html>
