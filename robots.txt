@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://un1-versal.github.io/dcbots/sitemap.xml
