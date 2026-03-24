@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Партнерская программа — DC Bots</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%235a67d8'/%3E%3Ctext x='50' y='67' text-anchor='middle' fill='white' font-size='50' font-weight='bold'%3EDC%3C/text%3E%3C/svg%3E">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            padding: 20px 0;
+            border-bottom: 1px solid #2a2a2a;
+            background: #0a0a0a;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #5a67d8;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #e0e0e0;
+        }
+
+        .nav {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav a:hover {
+            color: #5a67d8;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: #5a67d8;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #6c63ff;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 1px solid #5a67d8;
+            color: #5a67d8;
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: #5a67d8;
+            color: white;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #5a67d8, #9f7aea);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #a0a0a0;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section {
+            padding: 50px 0;
+            border-top: 1px solid #2a2a2a;
+        }
+
+        .section-title {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: white;
+            text-align: center;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: #141414;
+            border: 1px solid #2a2a2a;
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #5a67d8;
+        }
+
+        .card-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .card p {
+            color: #a0a0a0;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .commission {
+            font-size: 36px;
+            font-weight: bold;
+            color: #5a67d8;
+            margin: 20px 0;
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .step {
+            background: #141414;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: #5a67d8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .step-content h3 {
+            margin-bottom: 8px;
+            color: white;
+        }
+
+        .step-content p {
+            color: #a0a0a0;
+            font-size: 14px;
+        }
+
+        .faq-item {
+            background: #141414;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 18px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+        }
+
+        .faq-question:hover {
+            background: #1a1a1a;
+        }
+
+        .faq-icon {
+            color: #5a67d8;
+            font-size: 22px;
+            transition: transform 0.2s;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: #a0a0a0;
+            font-size: 14px;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px 20px;
+            max-height: 200px;
+            border-top: 1px solid #2a2a2a;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .footer {
+            border-top: 1px solid #2a2a2a;
+            padding: 40px 0;
+            text-align: center;
+            color: #6c6c6c;
+        }
+
+        .footer a {
+            color: #5a67d8;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+            .step {
+                flex-direction: column;
+                text-align: center;
+            }
+            .header-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+            .nav {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">DC<span>Bots</span></a>
+            <div class="nav">
+                <a href="index.html">Главная</a>
+                <a href="dungeon-crusher.html">Dungeon Crusher</a>
+                <a href="support.html">Поддержка</a>
+                <a href="partners.html">Партнерам</a>
+                <a href="https://t.me/alibobao" target="_blank">Telegram</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>🤝 Партнерская программа</h1>
+            <p>Зарабатывайте до 30% с каждой продажи. Приводите клиентов — получайте деньги на карту или Telegram.</p>
+            <div style="margin-top: 30px;">
+                <a href="https://t.me/alibobao" class="btn btn-primary" target="_blank">Стать партнером →</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="section">
+            <h2 class="section-title">Сколько можно заработать</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-icon">🎯</div>
+                    <h3>Обычный партнер</h3>
+                    <p>Для всех участников</p>
+                    <div class="commission">20%</div>
+                    <p>с каждой продажи</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⭐</div>
+                    <h3>Продвинутый</h3>
+                    <p>5+ продаж в месяц</p>
+                    <div class="commission">25%</div>
+                    <p>с каждой продажи</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">👑</div>
+                    <h3>VIP партнер</h3>
+                    <p>20+ продаж в месяц</p>
+                    <div class="commission">30%</div>
+                    <p>с каждой продажи</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Как это работает</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Подайте заявку</h3>
+                        <p>Напишите @alibobao в Telegram. Мы выдадим вам уникальную реферальную ссылку.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Делитесь ссылкой</h3>
+                        <p>Размещайте ссылку в соцсетях, на форумах, в чатах. Каждый переход — потенциальный клиент.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Получайте комиссию</h3>
+                        <p>Когда клиент покупает бота по вашей ссылке — вы получаете до 30% от суммы.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Выводите деньги</h3>
+                        <p>Раз в месяц выплаты на карту, ЮMoney или Telegram. Без комиссии.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Пример заработка</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>1 продажа</h3>
+                    <div class="commission">500–900 ₽</div>
+                    <p>за один месяц лицензии</p>
+                </div>
+                <div class="card">
+                    <h3>10 продаж</h3>
+                    <div class="commission">5 000–9 000 ₽</div>
+                    <p>в месяц</p>
+                </div>
+                <div class="card">
+                    <h3>50 продаж</h3>
+                    <div class="commission">25 000–45 000 ₽</div>
+                    <p>в месяц</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">❓ Часто задаваемые вопросы</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Как получить реферальную ссылку?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Напишите @alibobao в Telegram. Мы создадим для вас уникальную ссылку и дадим все инструкции.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Как отслеживать продажи?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Мы присылаем уведомления в Telegram о каждом переходе и каждой продаже. Также можно запросить статистику в любое время.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Когда выплачивают деньги?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Выплаты производятся раз в месяц, до 10 числа. Минимальная сумма для вывода — 1 000 ₽.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Могу ли я рекламировать где угодно?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Да, вы можете использовать любые каналы: соцсети, форумы, YouTube, Telegram-каналы. Запрещена только прямая реклама в чатах поддержки конкурентов.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Что если клиент вернет деньги?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>В случае возврата комиссия с этой продажи не начисляется или удерживается из следующей выплаты.</p>
+                </div>
+            </div>
+        </section>
+
+        <section style="padding: 50px 0; text-align: center;">
+            <h2 class="section-title">Готовы начать зарабатывать?</h2>
+            <p style="margin-bottom: 30px; color: #a0a0a0;">Напишите нам в Telegram — выдадим реферальную ссылку</p>
+            <a href="https://t.me/alibobao" class="btn btn-primary" target="_blank">Стать партнером →</a>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 DC Bots. Все права защищены.</p>
+            <p style="margin-top: 10px;">
+                <a href="index.html">Главная</a> |
+                <a href="dungeon-crusher.html">Dungeon Crusher</a> |
+                <a href="support.html">Поддержка</a> |
+                <a href="partners.html">Партнерам</a> |
+                <a href="https://t.me/alibobao">Telegram</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
