@@ -1,0 +1,96 @@
+/* Основные стили для сайта DC Bots */
+
+/* ===== КНОПКИ ===== */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background: #5a67d8;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #6c63ff;
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    border: 1px solid #5a67d8;
+    color: #5a67d8;
+    background: transparent;
+}
+
+.btn-outline:hover {
+    background: #5a67d8;
+    color: white;
+}
+
+.btn-large {
+    padding: 14px 36px;
+    font-size: 16px;
+}
+
+/* ===== КАРТОЧКИ ===== */
+.card {
+    background: #141414;
+    border: 1px solid #2a2a2a;
+    border-radius: 16px;
+    padding: 24px;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #5a67d8;
+}
+
+/* ===== ГРИДЫ ===== */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* ===== АНИМАЦИИ ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* ===== СКРОЛЛБАР ===== */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #141414;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #5a67d8;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #6c63ff;
+}
