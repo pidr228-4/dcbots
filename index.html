@@ -4,11 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DC Bots — Автоматизация для игр</title>
-    <meta name="description" content="DC Bots — автоматизация для игр и маркетплейсов. Dungeon Crusher Bot с ИИ-директором v2.0, Avito Bot, Universal Macro Bot.">
-    <meta name="keywords" content="бот, Dungeon Crusher, автоматизация, осады, ИИ-директор, Avito, макросы">
-    <meta name="author" content="DC Bots">
-    <meta name="robots" content="index, follow">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%235a67d8'/%3E%3Ctext x='50' y='67' text-anchor='middle' fill='white' font-size='50' font-weight='bold'%3EDC%3C/text%3E%3C/svg%3E">
     <style>
         * {
             margin: 0;
@@ -29,6 +24,7 @@
             padding: 0 20px;
         }
 
+        /* Header */
         .header {
             padding: 20px 0;
             border-bottom: 1px solid #2a2a2a;
@@ -73,6 +69,7 @@
             color: #5a67d8;
         }
 
+        /* Кнопки */
         .btn {
             display: inline-block;
             padding: 12px 28px;
@@ -82,6 +79,7 @@
             transition: all 0.2s;
             cursor: pointer;
             border: none;
+            text-align: center;
         }
 
         .btn-primary {
@@ -105,6 +103,150 @@
             color: white;
         }
 
+        .btn-sm {
+            padding: 8px 20px;
+            font-size: 13px;
+        }
+
+        /* Карточки */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .bot-card {
+            background: #141414;
+            border: 1px solid #2a2a2a;
+            border-radius: 20px;
+            padding: 28px;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .bot-card:hover {
+            transform: translateY(-8px);
+            border-color: #5a67d8;
+            box-shadow: 0 20px 40px rgba(90, 103, 216, 0.15);
+        }
+
+        .bot-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .bot-card h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: white;
+            font-weight: 600;
+        }
+
+        .bot-description {
+            color: #a0a0a0;
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .bot-features {
+            list-style: none;
+            margin: 20px 0;
+            flex-grow: 1;
+        }
+
+        .bot-features li {
+            padding: 8px 0;
+            color: #b0b0b0;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .bot-features li::before {
+            content: "✓";
+            color: #5a67d8;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .price {
+            font-size: 28px;
+            font-weight: bold;
+            color: #5a67d8;
+            margin: 20px 0 16px;
+        }
+
+        .price small {
+            font-size: 14px;
+            color: #6c6c6c;
+            font-weight: normal;
+        }
+
+        .price-status {
+            font-size: 14px;
+            color: #f6ad55;
+            margin: 20px 0 16px;
+            font-weight: 500;
+        }
+
+        .card-footer {
+            margin-top: auto;
+            padding-top: 20px;
+        }
+
+        .card-footer .btn {
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+
+        /* Секция преимуществ */
+        .features {
+            background: #0f0f0f;
+            padding: 60px 0;
+            margin-top: 40px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+        }
+
+        .feature-item h4 {
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .feature-item p {
+            color: #a0a0a0;
+            font-size: 14px;
+        }
+
+        /* Hero секция */
         .hero {
             padding: 80px 0;
             text-align: center;
@@ -133,131 +275,7 @@
             flex-wrap: wrap;
         }
 
-        .bots {
-            padding: 60px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 32px;
-            margin-bottom: 40px;
-            color: white;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-
-        .bot-card {
-            background: #141414;
-            border: 1px solid #2a2a2a;
-            border-radius: 16px;
-            padding: 24px;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-
-        .bot-card:hover {
-            transform: translateY(-5px);
-            border-color: #5a67d8;
-        }
-
-        .bot-icon {
-            font-size: 48px;
-            margin-bottom: 16px;
-        }
-
-        .bot-card h3 {
-            font-size: 22px;
-            margin-bottom: 12px;
-            color: white;
-        }
-
-        .bot-card p {
-            color: #a0a0a0;
-            margin-bottom: 20px;
-            font-size: 14px;
-        }
-
-        .bot-features {
-            list-style: none;
-            margin-bottom: 24px;
-        }
-
-        .bot-features li {
-            padding: 6px 0;
-            color: #b0b0b0;
-            font-size: 13px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .bot-features li::before {
-            content: "✓";
-            color: #5a67d8;
-            font-weight: bold;
-        }
-
-        .price {
-            font-size: 24px;
-            font-weight: bold;
-            color: #5a67d8;
-            margin-bottom: 16px;
-        }
-
-        .price small {
-            font-size: 14px;
-            color: #a0a0a0;
-            font-weight: normal;
-        }
-
-        .bot-link {
-            display: inline-block;
-            padding: 10px 20px;
-            background: #2a2a2a;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: background 0.2s;
-        }
-
-        .bot-link:hover {
-            background: #5a67d8;
-        }
-
-        .features {
-            background: #0f0f0f;
-            padding: 60px 0;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-item {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .feature-icon {
-            font-size: 40px;
-            margin-bottom: 16px;
-        }
-
-        .feature-item h4 {
-            margin-bottom: 10px;
-            color: white;
-        }
-
-        .feature-item p {
-            color: #a0a0a0;
-            font-size: 14px;
-        }
-
+        /* Футер */
         .footer {
             border-top: 1px solid #2a2a2a;
             padding: 40px 0;
@@ -271,121 +289,37 @@
             text-decoration: none;
         }
 
-        /* Анимация загрузки */
-        .loader-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #0a0a0a;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-
-        .loader {
-            text-align: center;
-        }
-
-        .loader-logo {
-            font-size: 64px;
-            animation: bounce 1s ease-in-out infinite;
-        }
-
-        .loader-text {
-            margin-top: 20px;
-            font-size: 18px;
-            color: #5a67d8;
-            letter-spacing: 2px;
-            animation: pulse 1.5s ease-in-out infinite;
-        }
-
-        .loader-dots {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .loader-dot {
-            width: 12px;
-            height: 12px;
-            background: #5a67d8;
-            border-radius: 50%;
-            animation: dotPulse 1s ease-in-out infinite;
-        }
-
-        .loader-dot:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .loader-dot:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        @keyframes dotPulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.5); opacity: 0.5; }
-        }
-
-        .loader-wrapper.hide {
-            opacity: 0;
-            visibility: hidden;
+        /* Адаптивность */
+        @media (max-width: 1024px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
             .hero h1 {
                 font-size: 32px;
-            }
-            .hero p {
-                font-size: 16px;
-            }
-            .section-title {
-                font-size: 26px;
             }
             .header-inner {
                 flex-direction: column;
                 text-align: center;
             }
+            .nav {
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="loader-wrapper" id="loader">
-        <div class="loader">
-            <div class="loader-logo">⚔️</div>
-            <div class="loader-text">DC Bots</div>
-            <div class="loader-dots">
-                <div class="loader-dot"></div>
-                <div class="loader-dot"></div>
-                <div class="loader-dot"></div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        window.addEventListener('load', function() {
-            const loader = document.getElementById('loader');
-            loader.classList.add('hide');
-            setTimeout(() => {
-                loader.remove();
-            }, 500);
-        });
-    </script>
-
     <header class="header">
         <div class="container header-inner">
             <a href="index.html" class="logo">DC<span>Bots</span></a>
@@ -410,51 +344,58 @@
         </div>
     </section>
 
-    <section id="bots" class="bots">
-        <div class="container">
-            <h2 class="section-title">Наши решения</h2>
-            <div class="grid">
-                <div class="bot-card">
-                    <div class="bot-icon">⚔️</div>
-                    <h3>Dungeon Crusher Bot</h3>
-                    <p>Автоматическое прохождение осад, распознавание боссов, умный черный список. С ИИ-директором, который учится на ваших действиях.</p>
-                    <ul class="bot-features">
-                        <li>Авто-осады с полным циклом</li>
-                        <li>Распознавание кнопок через OpenCV</li>
-                        <li>ИИ-директор v2.0 (обучение и предсказания)</li>
-                        <li>Черный список мобов</li>
-                        <li>Автовосстановление при зависаниях</li>
-                    </ul>
+    <section id="bots" class="container">
+        <h2 class="section-title">Наши решения</h2>
+        <div class="grid">
+            <!-- Карточка 1: Dungeon Crusher Bot -->
+            <div class="bot-card">
+                <div class="bot-icon">⚔️</div>
+                <h3>Dungeon Crusher Bot</h3>
+                <p class="bot-description">Автоматическое прохождение осад, распознавание боссов, умный черный список. С ИИ-директором, который учится на ваших действиях.</p>
+                <ul class="bot-features">
+                    <li>Авто-осады с полным циклом</li>
+                    <li>Распознавание кнопок через OpenCV</li>
+                    <li>ИИ-директор v2.0 (обучение и предсказания)</li>
+                    <li>Черный список мобов</li>
+                    <li>Автовосстановление при зависаниях</li>
+                </ul>
+                <div class="card-footer">
                     <div class="price">от 499 ₽ <small>/ месяц</small></div>
-                    <a href="dungeon-crusher.html" class="bot-link">Подробнее →</a>
+                    <a href="dungeon-crusher.html" class="btn btn-primary">Подробнее →</a>
                 </div>
+            </div>
 
-                <div class="bot-card">
-                    <div class="bot-icon">📦</div>
-                    <h3>Avito Bot</h3>
-                    <p>Автоматизация для продавцов на Avito. Поднятие объявлений, мониторинг конкурентов, авто-ответы.</p>
-                    <ul class="bot-features">
-                        <li>Авто-поднятие объявлений</li>
-                        <li>Мониторинг новых заказов</li>
-                        <li>Авто-ответы на сообщения</li>
-                        <li>Статистика просмотров</li>
-                    </ul>
-                    <div class="price">Скоро</div>
-                    <a href="https://t.me/alibobao" class="bot-link" target="_blank">Узнать о выходе →</a>
+            <!-- Карточка 2: Avito Bot -->
+            <div class="bot-card">
+                <div class="bot-icon">📦</div>
+                <h3>Avito Bot</h3>
+                <p class="bot-description">Автоматизация для продавцов на Avito. Поднятие объявлений, мониторинг конкурентов, авто-ответы.</p>
+                <ul class="bot-features">
+                    <li>Авто-поднятие объявлений</li>
+                    <li>Мониторинг новых заказов</li>
+                    <li>Авто-ответы на сообщения</li>
+                    <li>Статистика просмотров</li>
+                </ul>
+                <div class="card-footer">
+                    <div class="price-status">🚀 Скоро</div>
+                    <a href="https://t.me/alibobao" class="btn btn-outline" target="_blank">Узнать о выходе →</a>
                 </div>
+            </div>
 
-                <div class="bot-card">
-                    <div class="bot-icon">🖱️</div>
-                    <h3>Universal Macro Bot</h3>
-                    <p>Конструктор макросов для любых игр и программ. Записывайте действия и запускайте в цикле.</p>
-                    <ul class="bot-features">
-                        <li>Запись последовательностей</li>
-                        <li>Поиск изображений на экране</li>
-                        <li>Условные операторы</li>
-                        <li>Запуск по расписанию</li>
-                    </ul>
-                    <div class="price">Скоро</div>
-                    <a href="https://t.me/alibobao" class="bot-link" target="_blank">Узнать о выходе →</a>
+            <!-- Карточка 3: Universal Macro Bot -->
+            <div class="bot-card">
+                <div class="bot-icon">🖱️</div>
+                <h3>Universal Macro Bot</h3>
+                <p class="bot-description">Конструктор макросов для любых игр и программ. Записывайте действия и запускайте в цикле.</p>
+                <ul class="bot-features">
+                    <li>Запись последовательностей</li>
+                    <li>Поиск изображений на экране</li>
+                    <li>Условные операторы</li>
+                    <li>Запуск по расписанию</li>
+                </ul>
+                <div class="card-footer">
+                    <div class="price-status">🚀 Скоро</div>
+                    <a href="https://t.me/alibobao" class="btn btn-outline" target="_blank">Узнать о выходе →</a>
                 </div>
             </div>
         </div>
