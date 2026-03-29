@@ -156,9 +156,12 @@
             background: #141414;
             border: 1px solid #2a2a2a;
             border-radius: 16px;
-            padding: 24px;
+            padding: 28px 24px;
             text-align: center;
             transition: transform 0.2s, border-color 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .price-card:hover {
@@ -169,6 +172,7 @@
         .price-card h3 {
             font-size: 24px;
             margin-bottom: 16px;
+            color: white;
         }
 
         .price {
@@ -186,6 +190,7 @@
         .price-list {
             list-style: none;
             margin: 20px 0;
+            flex-grow: 1;
         }
 
         .price-list li {
@@ -195,6 +200,12 @@
 
         .price-list li.highlight {
             color: #5a67d8;
+        }
+
+        .price-card .btn {
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
         }
 
         .faq-grid {
@@ -312,6 +323,9 @@
             }
             .nav {
                 justify-content: center;
+            }
+            .grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
