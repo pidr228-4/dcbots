@@ -362,6 +362,101 @@
             visibility: hidden;
         }
 
+        /* Модальное окно */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: #141414;
+            border: 1px solid #2a2a2a;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            animation: modalFadeIn 0.3s ease;
+        }
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        .modal-header h3 {
+            color: #5a67d8;
+            font-size: 20px;
+            margin: 0;
+        }
+        .modal-close {
+            font-size: 28px;
+            cursor: pointer;
+            color: #a0a0a0;
+            transition: color 0.2s;
+            line-height: 1;
+        }
+        .modal-close:hover {
+            color: #e53e3e;
+        }
+        .modal-body {
+            padding: 24px;
+        }
+        .modal-body p {
+            color: #a0a0a0;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        .modal-body input, .modal-body textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 16px;
+            background: #0a0a0a;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            color: white;
+            font-family: inherit;
+            font-size: 14px;
+        }
+        .modal-body input:focus, .modal-body textarea:focus {
+            outline: none;
+            border-color: #5a67d8;
+        }
+        .modal-body button {
+            width: 100%;
+            margin-top: 8px;
+        }
+        .feedback-status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 14px;
+            display: none;
+        }
+        .feedback-status.success {
+            display: block;
+            background: rgba(72, 187, 120, 0.2);
+            border: 1px solid #48bb78;
+            color: #48bb78;
+        }
+        .feedback-status.error {
+            display: block;
+            background: rgba(229, 62, 62, 0.2);
+            border: 1px solid #e53e3e;
+            color: #e53e3e;
+        }
+
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 32px;
@@ -425,7 +520,7 @@
             <p>Боты для Avito, игр и повторяющихся задач. Экономьте часы каждый день.</p>
             <div class="hero-buttons">
                 <a href="#bots" class="btn btn-primary">Выбрать бота →</a>
-                <a href="#bots" class="btn btn-outline">✨ Исследовать</a>
+                <button id="feedbackBtn" class="btn btn-outline">💬 Предложить идею</button>
             </div>
         </div>
     </section>
@@ -531,5 +626,93 @@
             </p>
         </div>
     </footer>
+
+    <!-- Модальное окно для обратной связи -->
+    <div id="feedbackModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>💬 Предложить идею</h3>
+                <span class="modal-close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Расскажите, как мы можем улучшить наших ботов или что добавить. Нам важно ваше мнение!</p>
+                <form id="feedbackForm">
+                    <input type="text" id="feedbackName" placeholder="Ваше имя" required>
+                    <input type="email" id="feedbackEmail" placeholder="Ваш Email" required>
+                    <textarea id="feedbackMessage" rows="5" placeholder="Ваше сообщение..." required></textarea>
+                    <button type="submit" class="btn btn-primary">📨 Отправить</button>
+                </form>
+                <div id="feedbackStatus" class="feedback-status"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Модальное окно
+        const modal = document.getElementById('feedbackModal');
+        const btn = document.getElementById('feedbackBtn');
+        const closeBtn = document.querySelector('.modal-close');
+
+        if (btn) {
+            btn.onclick = function() {
+                modal.style.display = 'flex';
+            }
+        }
+
+        if (closeBtn) {
+            closeBtn.onclick = function() {
+                modal.style.display = 'none';
+            }
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Отправка формы
+        const form = document.getElementById('feedbackForm');
+        if (form) {
+            form.onsubmit = async function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('feedbackName').value;
+                const email = document.getElementById('feedbackEmail').value;
+                const message = document.getElementById('feedbackMessage').value;
+                const statusDiv = document.getElementById('feedbackStatus');
+                
+                const formData = new FormData();
+                formData.append('name', name);
+                formData.append('email', email);
+                formData.append('message', message);
+                formData.append('_subject', 'Новое сообщение с сайта DC Bots');
+                formData.append('_captcha', 'false');
+                
+                try {
+                    const response = await fetch('https://formsubmit.co/ajax/cheltypo@gmail.com', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    if (response.ok) {
+                        statusDiv.className = 'feedback-status success';
+                        statusDiv.textContent = '✅ Сообщение отправлено! Мы свяжемся с вами в ближайшее время.';
+                        form.reset();
+                        setTimeout(() => {
+                            modal.style.display = 'none';
+                            statusDiv.className = 'feedback-status';
+                            statusDiv.style.display = 'none';
+                        }, 3000);
+                    } else {
+                        throw new Error('Ошибка отправки');
+                    }
+                } catch (error) {
+                    statusDiv.className = 'feedback-status error';
+                    statusDiv.textContent = '❌ Ошибка отправки. Пожалуйста, напишите нам на cheltypo@gmail.com';
+                }
+            };
+        }
+    </script>
 </body>
 </html>
