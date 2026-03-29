@@ -647,8 +647,35 @@
         </div>
     </div>
 
+    <!-- Партнерский скрипт отслеживания -->
     <script>
-        // Модальное окно
+        (function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const refId = urlParams.get('ref');
+
+            if (refId) {
+                localStorage.setItem('partner_ref', refId);
+                localStorage.setItem('partner_ref_date', Date.now());
+
+                const data = {
+                    ref: refId,
+                    page: window.location.pathname || '/',
+                    userAgent: navigator.userAgent,
+                    timestamp: new Date().toISOString()
+                };
+
+                fetch('https://script.google.com/macros/s/AKfycbyxhRyAuJgmjThz6lkh7V9ieVLjebNw2ax_NXbIOSZznwmSB9GwSq9b2zLZtBP7JHEJKA/exec', {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                }).catch(e => console.log('Ошибка отправки:', e));
+            }
+        })();
+    </script>
+
+    <!-- Скрипт модального окна -->
+    <script>
         const modal = document.getElementById('feedbackModal');
         const btn = document.getElementById('feedbackBtn');
         const closeBtn = document.querySelector('.modal-close');
@@ -671,7 +698,6 @@
             }
         }
 
-        // Отправка формы
         const form = document.getElementById('feedbackForm');
         if (form) {
             form.onsubmit = async function(e) {
