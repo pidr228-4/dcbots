@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Поддержка — DC Bots</title>
     <meta name="description" content="Поддержка DC Bots. Часто задаваемые вопросы, контакты для связи, форма обратной связи.">
-    <meta name="keywords" content="поддержка, помощь, DC Bots, контакты, FAQ">
+    <meta name="keywords" content="поддержка, помощь, DC Bots, контакты, FAQ, Avito Bot, Dungeon Crusher Bot">
     <meta name="author" content="DC Bots">
     <meta name="robots" content="index, follow">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%235a67d8'/%3E%3Ctext x='50' y='67' text-anchor='middle' fill='white' font-size='50' font-weight='bold'%3EDC%3C/text%3E%3C/svg%3E">
@@ -210,7 +210,7 @@
 
         .faq-item.active .faq-answer {
             padding: 0 20px 20px 20px;
-            max-height: 300px;
+            max-height: 500px;
             border-top: 1px solid #2a2a2a;
         }
 
@@ -240,11 +240,6 @@
         .form-group select:focus {
             outline: none;
             border-color: #5a67d8;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
         }
 
         .alert {
@@ -286,7 +281,6 @@
             text-decoration: none;
         }
 
-        /* Анимация загрузки */
         .loader-wrapper {
             position: fixed;
             top: 0;
@@ -406,6 +400,7 @@
             <a href="index.html" class="logo">DC<span>Bots</span></a>
             <div class="nav">
                 <a href="index.html">Главная</a>
+                <a href="avito-bot.html">Avito Bot</a>
                 <a href="dungeon-crusher.html">Dungeon Crusher</a>
                 <a href="support.html">Поддержка</a>
                 <a href="partners.html">Партнерам</a>
@@ -435,7 +430,7 @@
             </div>
             <div class="contact-card">
                 <h3>📖 Инструкция</h3>
-                <p>Подробная инструкция по установке и настройке бота.</p>
+                <p>Подробная инструкция по установке и настройке ботов.</p>
                 <a href="README.txt" target="_blank">Скачать инструкцию →</a>
             </div>
         </div>
@@ -443,16 +438,89 @@
         <div class="section">
             <h2 class="section-title">❓ Часто задаваемые вопросы</h2>
 
+            <!-- Avito Bot FAQ -->
             <div class="faq-item">
                 <div class="faq-question">
-                    <span>Как установить бота?</span>
+                    <span>📦 Avito Bot — как установить и настроить?</span>
                     <span class="faq-icon">+</span>
                 </div>
                 <div class="faq-answer">
-                    <p>1. Скачайте установщик по ссылке, которую получили после оплаты.<br>2. Запустите установщик от имени администратора.<br>3. Введите пароль и выберите папку установки.<br>4. После установки запустите бота через ярлык на рабочем столе.<br>5. В окне активации введите полученный лицензионный ключ.</p>
+                    <p>1. Скачайте установщик по ссылке, которую получили после оплаты.<br>
+                    2. Запустите установщик от имени администратора.<br>
+                    3. Введите пароль и выберите папку установки.<br>
+                    4. После установки запустите бота через ярлык на рабочем столе.<br>
+                    5. В окне активации введите полученный лицензионный ключ.<br>
+                    6. Нажмите "Запустить", выберите браузер и войдите в аккаунт Avito.<br>
+                    7. После входа нажмите "Поднять сейчас" для поднятия объявлений.</p>
                 </div>
             </div>
 
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>📦 Avito Bot — на каких браузерах работает?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Бот поддерживает Google Chrome, Microsoft Edge и Firefox. В настройках можно выбрать любой из этих браузеров.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>📦 Avito Bot — как настроить авто-поднятие?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>В настройках бота выберите интервал поднятия (от 1 до 48 часов). Бот будет автоматически поднимать все доступные объявления с заданной периодичностью.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>📦 Avito Bot — как настроить авто-ответы?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>В настройках включите "Авто-ответы на сообщения" и укажите шаблон ответа. Бот будет автоматически отвечать на все новые сообщения.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>📦 Avito Bot — сколько стоит лицензия?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Тарифы: 1 месяц — 499 ₽, 3 месяца — 1 199 ₽, Навсегда — 2 999 ₽. После оплаты вы получаете лицензионный ключ.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>⚔️ Dungeon Crusher Bot — как установить?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>1. Скачайте установщик.<br>
+                    2. Запустите от имени администратора.<br>
+                    3. Введите пароль.<br>
+                    4. После установки запустите бота.<br>
+                    5. Активируйте лицензионный ключ.<br>
+                    6. Нажмите "Запустить бота" и сверните окно игры.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>⚔️ Dungeon Crusher Bot — что такое ИИ-директор?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>ИИ-директор v2.0 — это система искусственного интеллекта, которая анализирует ваши осады, запоминает успешные паттерны, предсказывает появление боссов и эволюционирует стратегии для максимальной эффективности.</p>
+                </div>
+            </div>
+
+            <!-- Общие вопросы -->
             <div class="faq-item">
                 <div class="faq-question">
                     <span>Как получить лицензионный ключ?</span>
@@ -460,16 +528,6 @@
                 </div>
                 <div class="faq-answer">
                     <p>После оплаты ключ приходит в Telegram в течение 5-15 минут. Если ключ не пришел — напишите @alibobao с указанием номера платежа и почты.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Бот работает на всех разрешениях экрана?</span>
-                    <span class="faq-icon">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Да, бот адаптируется под ваше разрешение. Рекомендуемое разрешение — 1920x1080, но работает и на других (от 1280x720).</p>
                 </div>
             </div>
 
@@ -485,11 +543,11 @@
 
             <div class="faq-item">
                 <div class="faq-question">
-                    <span>Блокируют ли игру за использование бота?</span>
+                    <span>Блокируют ли игру/сайт за использование бота?</span>
                     <span class="faq-icon">+</span>
                 </div>
                 <div class="faq-answer">
-                    <p>Бот эмулирует действия мыши и клавиатуры, не вмешивается в процесс игры. Риск минимален. За все время использования ни одного случая блокировки.</p>
+                    <p>Бот эмулирует действия мыши и клавиатуры, не вмешивается в процесс игры/сайта. Риск минимален. За все время использования ни одного случая блокировки.</p>
                 </div>
             </div>
 
@@ -499,7 +557,10 @@
                     <span class="faq-icon">+</span>
                 </div>
                 <div class="faq-answer">
-                    <p>1. Убедитесь, что игра открыта и не свернута.<br>2. Перезапустите бота.<br>3. Проверьте, что окно игры не перекрыто другими окнами.<br>4. Если проблема повторяется — напишите в поддержку, приложите скриншот экрана.</p>
+                    <p>1. Убедитесь, что игра/сайт открыты и не свернуты.<br>
+                    2. Перезапустите бота.<br>
+                    3. Проверьте, что окно не перекрыто другими окнами.<br>
+                    4. Если проблема повторяется — напишите в поддержку, приложите скриншот экрана.</p>
                 </div>
             </div>
 
@@ -536,7 +597,8 @@
                 </div>
                 <div class="form-group">
                     <select id="subject">
-                        <option value="Вопрос по боту">Вопрос по боту</option>
+                        <option value="Avito Bot">Avito Bot</option>
+                        <option value="Dungeon Crusher Bot">Dungeon Crusher Bot</option>
                         <option value="Проблема с активацией">Проблема с активацией</option>
                         <option value="Покупка лицензии">Покупка лицензии</option>
                         <option value="Другое">Другое</option>
@@ -560,6 +622,7 @@
             <p>© 2026 DC Bots. Все права защищены.</p>
             <p style="margin-top: 10px;">
                 <a href="index.html">Главная</a> |
+                <a href="avito-bot.html">Avito Bot</a> |
                 <a href="dungeon-crusher.html">Dungeon Crusher</a> |
                 <a href="support.html">Поддержка</a> |
                 <a href="partners.html">Партнерам</a> |
