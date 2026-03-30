@@ -82,6 +82,7 @@
             transition: all 0.2s;
             cursor: pointer;
             border: none;
+            font-size: 16px;
         }
 
         .btn-primary {
@@ -647,29 +648,35 @@
         </div>
     </div>
 
-    <!-- Партнерский скрипт отслеживания -->
+    <!-- Партнерский скрипт отслеживания (расширенная версия) -->
     <script>
         (function() {
             const urlParams = new URLSearchParams(window.location.search);
             const refId = urlParams.get('ref');
 
             if (refId) {
+                // Сохраняем ID партнера в localStorage
                 localStorage.setItem('partner_ref', refId);
                 localStorage.setItem('partner_ref_date', Date.now());
 
+                // Собираем максимум информации
                 const data = {
                     ref: refId,
-                    page: window.location.pathname || '/',
+                    page: window.location.pathname,
                     userAgent: navigator.userAgent,
+                    referrer: document.referrer || "прямой",
+                    screen: `${window.screen.width}x${window.screen.height}`,
+                    language: navigator.language,
                     timestamp: new Date().toISOString()
                 };
 
-                fetch('https://script.google.com/macros/s/AKfycbyxhRyAuJgmjThz6lkh7V9ieVLjebNw2ax_NXbIOSZznwmSB9GwSq9b2zLZtBP7JHEJKA/exec', {
+                // Отправляем POST-запрос к веб-приложению Google Apps Script
+                fetch('https://script.google.com/macros/s/AKfycbyxhRyAuJgmjThz6lkh7V9ieVLjeNbW2ax_NXblOSZznwmSB9GwSq9b2zLZTBP7JHEJKA/exec', {
                     method: 'POST',
                     mode: 'no-cors',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
-                }).catch(e => console.log('Ошибка отправки:', e));
+                }).catch(e => console.log('Ошибка отправки данных партнера:', e));
             }
         })();
     </script>
