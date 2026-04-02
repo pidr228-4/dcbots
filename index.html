@@ -263,33 +263,77 @@
             font-size: 14px;
         }
 
-        /* форма предложения идеи */
-        .idea-section {
+        /* модальное окно */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
             background: linear-gradient(135deg, #1a1a2e, #16213e);
+            margin: 10% auto;
+            padding: 0;
+            width: 90%;
+            max-width: 500px;
             border-radius: 20px;
-            padding: 50px 40px;
-            margin: 40px 0;
-            text-align: center;
+            border: 1px solid #5a67d8;
+            box-shadow: 0 0 30px rgba(90, 103, 216, 0.3);
+            animation: modalFadeIn 0.3s ease;
         }
 
-        .idea-section h2 {
-            font-size: 28px;
-            margin-bottom: 15px;
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            padding: 20px 25px;
+            border-bottom: 1px solid #2a2a2a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
             color: white;
+            font-size: 24px;
         }
 
-        .idea-section p {
+        .modal-header h2 span {
+            color: #5a67d8;
+        }
+
+        .close-modal {
             color: #a0a0a0;
-            margin-bottom: 25px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
         }
 
-        .idea-form {
-            max-width: 600px;
-            margin: 0 auto;
+        .close-modal:hover {
+            color: #e53e3e;
         }
 
-        .idea-form input,
-        .idea-form textarea {
+        .modal-body {
+            padding: 25px;
+        }
+
+        .modal-body input,
+        .modal-body textarea {
             width: 100%;
             padding: 14px 18px;
             margin-bottom: 15px;
@@ -302,22 +346,23 @@
             transition: border-color 0.2s;
         }
 
-        .idea-form input:focus,
-        .idea-form textarea:focus {
+        .modal-body input:focus,
+        .modal-body textarea:focus {
             outline: none;
             border-color: #5a67d8;
         }
 
-        .idea-form textarea {
+        .modal-body textarea {
             resize: vertical;
-            min-height: 100px;
+            min-height: 120px;
         }
 
-        .idea-form button {
+        .modal-body button {
+            width: 100%;
             background: #5a67d8;
             color: white;
             border: none;
-            padding: 14px 32px;
+            padding: 14px;
             border-radius: 12px;
             font-size: 16px;
             font-weight: bold;
@@ -325,7 +370,7 @@
             transition: all 0.2s;
         }
 
-        .idea-form button:hover {
+        .modal-body button:hover {
             background: #6c63ff;
             transform: translateY(-2px);
         }
@@ -353,7 +398,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 9999;
+            z-index: 9998;
             transition: opacity 0.5s ease, visibility 0.5s ease;
         }
 
@@ -431,8 +476,9 @@
                 flex-direction: column;
                 text-align: center;
             }
-            .idea-section {
-                padding: 30px 20px;
+            .modal-content {
+                margin: 20% auto;
+                width: 95%;
             }
         }
     </style>
@@ -481,10 +527,33 @@
             <p>Боты для Avito, игр и повторяющихся задач. Экономьте часы каждый день.</p>
             <div class="hero-buttons">
                 <a href="#bots" class="btn btn-primary">Выбрать бота</a>
-                <a href="https://t.me/alibobao" class="btn btn-outline" target="_blank">Связаться в Telegram</a>
+                <button class="btn btn-outline" id="openModalBtn">💡 Предложить идею</button>
             </div>
         </div>
     </section>
+
+    <!-- Модальное окно с формой -->
+    <div id="ideaModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>💡 <span>Предложить идею</span></h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form action="https://formsubmit.co/cheltypo@gmail.com" method="POST" id="ideaForm">
+                    <input type="hidden" name="_subject" value="💡 Новая идея с сайта DC Bots">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="box">
+                    <input type="hidden" name="_autoresponse" value="Спасибо за вашу идею! Мы обязательно её рассмотрим и ответим в ближайшее время.">
+                    
+                    <input type="text" name="name" placeholder="Ваше имя" required>
+                    <input type="email" name="email" placeholder="Ваш email" required>
+                    <textarea name="message" placeholder="Опишите вашу идею..." required></textarea>
+                    <button type="submit">📩 Отправить</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <section id="bots" class="bots">
         <div class="container">
@@ -566,26 +635,6 @@
         </div>
     </section>
 
-    <!-- Блок "Предложить идею" с формой на email через FormSubmit -->
-    <div class="container">
-        <div class="idea-section">
-            <h2>💡 Есть идея по улучшению?</h2>
-            <p>Мы внимательно читаем каждое предложение. Ваши идеи помогают делать ботов лучше.</p>
-            <form class="idea-form" action="https://formsubmit.co/cheltypo@gmail.com" method="POST">
-                <!-- Скрытые поля для настройки FormSubmit -->
-                <input type="hidden" name="_subject" value="💡 Новая идея с сайта DC Bots">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_template" value="box">
-                <input type="hidden" name="_autoresponse" value="Спасибо за вашу идею! Мы обязательно её рассмотрим и ответим в ближайшее время.">
-                
-                <input type="text" name="name" placeholder="Ваше имя" required>
-                <input type="email" name="email" placeholder="Ваш email" required>
-                <textarea name="message" placeholder="Опишите вашу идею..." required></textarea>
-                <button type="submit">📩 Отправить идею</button>
-            </form>
-        </div>
-    </div>
-
     <footer class="footer">
         <div class="container">
             <p>© 2026 DC Bots. Все права защищены.</p>
@@ -600,5 +649,41 @@
             </p>
         </div>
     </footer>
+
+    <script>
+        // Модальное окно
+        const modal = document.getElementById('ideaModal');
+        const openBtn = document.getElementById('openModalBtn');
+        const closeBtn = document.querySelector('.close-modal');
+
+        openBtn.onclick = function() {
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Отправка формы через FormSubmit (мини-окно закроется автоматически после отправки)
+        const form = document.getElementById('ideaForm');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                    form.reset();
+                }, 500);
+            });
+        }
+    </script>
 </body>
 </html>
