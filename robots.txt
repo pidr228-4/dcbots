@@ -1,3 +1,23 @@
+# robots.txt для сайта dsbot.su
+# Разрешаем всем поисковым роботам индексировать сайт
 User-agent: *
 Allow: /
-Sitemap: https://un1-versal.github.io/dcbots/sitemap.xml
+
+# Запрещаем индексировать служебные страницы
+Disallow: /404.html
+Disallow: /debug_error.log
+Disallow: /test_*
+Disallow: /temp/
+
+# Указываем путь к карте сайта
+Sitemap: https://www.dsbot.su/sitemap.xml
+
+# Оптимизация для Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Оптимизация для Яндекса
+User-agent: Yandex
+Allow: /
+Crawl-delay: 2
