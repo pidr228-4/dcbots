@@ -263,6 +263,73 @@
             font-size: 14px;
         }
 
+        /* форма предложения идеи */
+        .idea-section {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border-radius: 20px;
+            padding: 50px 40px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .idea-section h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .idea-section p {
+            color: #a0a0a0;
+            margin-bottom: 25px;
+        }
+
+        .idea-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .idea-form input,
+        .idea-form textarea {
+            width: 100%;
+            padding: 14px 18px;
+            margin-bottom: 15px;
+            background: #0a0a0a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            color: white;
+            font-family: inherit;
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+
+        .idea-form input:focus,
+        .idea-form textarea:focus {
+            outline: none;
+            border-color: #5a67d8;
+        }
+
+        .idea-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .idea-form button {
+            background: #5a67d8;
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .idea-form button:hover {
+            background: #6c63ff;
+            transform: translateY(-2px);
+        }
+
         .footer {
             border-top: 1px solid #2a2a2a;
             padding: 40px 0;
@@ -363,6 +430,9 @@
             .header-inner {
                 flex-direction: column;
                 text-align: center;
+            }
+            .idea-section {
+                padding: 30px 20px;
             }
         }
     </style>
@@ -496,13 +566,25 @@
         </div>
     </section>
 
-    <section style="padding: 60px 0; text-align: center;">
-        <div class="container">
-            <h2 class="section-title">Остались вопросы?</h2>
-            <p style="margin-bottom: 30px; color: #a0a0a0;">Напишите нам в Telegram — ответим на все вопросы</p>
-            <a href="https://t.me/alibobao" class="btn btn-primary" target="_blank">Написать @alibobao</a>
+    <!-- Блок "Предложить идею" с формой на email через FormSubmit -->
+    <div class="container">
+        <div class="idea-section">
+            <h2>💡 Есть идея по улучшению?</h2>
+            <p>Мы внимательно читаем каждое предложение. Ваши идеи помогают делать ботов лучше.</p>
+            <form class="idea-form" action="https://formsubmit.co/cheltypo@gmail.com" method="POST">
+                <!-- Скрытые поля для настройки FormSubmit -->
+                <input type="hidden" name="_subject" value="💡 Новая идея с сайта DC Bots">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="box">
+                <input type="hidden" name="_autoresponse" value="Спасибо за вашу идею! Мы обязательно её рассмотрим и ответим в ближайшее время.">
+                
+                <input type="text" name="name" placeholder="Ваше имя" required>
+                <input type="email" name="email" placeholder="Ваш email" required>
+                <textarea name="message" placeholder="Опишите вашу идею..." required></textarea>
+                <button type="submit">📩 Отправить идею</button>
+            </form>
         </div>
-    </section>
+    </div>
 
     <footer class="footer">
         <div class="container">
