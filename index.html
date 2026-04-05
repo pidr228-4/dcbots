@@ -10,7 +10,6 @@
     <meta name="robots" content="index, follow">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%235a67d8'/%3E%3Ctext x='50' y='67' text-anchor='middle' fill='white' font-size='50' font-weight='bold'%3EDC%3C/text%3E%3C/svg%3E">
     <link rel="canonical" href="https://www.dsbot.su/">
-    <link rel="stylesheet" href="css/style.css">
     <style>
         * {
             margin: 0;
@@ -73,6 +72,38 @@
 
         .nav a:hover {
             color: #5a67d8;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: #5a67d8;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #6c63ff;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 1px solid #5a67d8;
+            color: #5a67d8;
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: #5a67d8;
+            color: white;
         }
 
         .hero {
@@ -496,7 +527,6 @@
                 <a href="support.html">Поддержка</a>
                 <a href="partners.html">Партнерам</a>
                 <a href="https://t.me/alibobao" target="_blank">Telegram</a>
-                <a href="license.html">Лицензия</a>
             </div>
         </div>
     </header>
@@ -524,10 +554,10 @@
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="box">
                     <input type="hidden" name="_autoresponse" value="Спасибо за вашу идею! Мы обязательно её рассмотрим и ответим в ближайшее время.">
+                    <input type="hidden" name="_next" value="https://www.dsbot.su/">
                     
                     <input type="text" name="name" id="modalName" placeholder="Ваше имя" required>
                     <input type="email" name="email" id="modalEmail" placeholder="Ваш email" required>
-                    <div id="emailError" style="color: #e53e3e; font-size: 12px; margin-top: -10px; margin-bottom: 10px; display: none;">❌ Введите корректный email (пример: name@domain.com)</div>
                     <textarea name="message" id="modalMessage" placeholder="Опишите вашу идею..." required></textarea>
                     <button type="submit" id="submitBtn">📩 Отправить</button>
                 </form>
@@ -630,8 +660,6 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
-    <script src="js/ref.js"></script>
     <script>
         const modal = document.getElementById('ideaModal');
         const openBtn = document.getElementById('openModalBtn');
@@ -640,8 +668,6 @@
         openBtn.onclick = function() {
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
-            document.getElementById('emailError').style.display = 'none';
-            document.getElementById('modalEmail').style.borderColor = '#2a2a2a';
         }
 
         closeBtn.onclick = function() {
@@ -654,51 +680,6 @@
                 modal.style.display = 'none';
                 document.body.style.overflow = 'auto';
             }
-        }
-
-        const form = document.getElementById('ideaForm');
-        const emailInput = document.getElementById('modalEmail');
-        const emailError = document.getElementById('emailError');
-
-        function isValidEmail(email) {
-            const emailRegex = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
-            return emailRegex.test(email);
-        }
-
-        if (form) {
-            form.addEventListener('submit', function(e) {
-                const email = emailInput.value.trim();
-                
-                if (!isValidEmail(email)) {
-                    e.preventDefault();
-                    emailError.style.display = 'block';
-                    emailInput.style.borderColor = '#e53e3e';
-                    return false;
-                }
-                
-                emailError.style.display = 'none';
-                emailInput.style.borderColor = '#2a2a2a';
-                
-                const submitBtn = document.getElementById('submitBtn');
-                const originalText = submitBtn.textContent;
-                submitBtn.textContent = '📩 Отправка...';
-                submitBtn.disabled = true;
-                
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                    form.reset();
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                }, 1500);
-            });
-            
-            emailInput.addEventListener('input', function() {
-                if (emailInput.style.borderColor === 'rgb(229, 62, 62)') {
-                    emailInput.style.borderColor = '#2a2a2a';
-                    emailError.style.display = 'none';
-                }
-            });
         }
     </script>
 </body>
