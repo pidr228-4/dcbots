@@ -11,26 +11,204 @@
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%235a67d8'/%3E%3Ctext x='50' y='67' text-anchor='middle' fill='white' font-size='50' font-weight='bold'%3EDC%3C/text%3E%3C/svg%3E">
     <link rel="canonical" href="https://www.dsbot.su/dungeon-crusher.html">
     <link rel="stylesheet" href="css/style.css">
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Product",
-        "name": "Dungeon Crusher Bot",
-        "description": "Автоматическое прохождение осад в Dungeon Crusher с ИИ-директором v2.0. Бот учится на ваших действиях и предсказывает появление боссов.",
-        "offers": {
-            "@type": "AggregateOffer",
-            "lowPrice": "499",
-            "highPrice": "2999",
-            "priceCurrency": "RUB",
-            "availability": "https://schema.org/OnlineOnly",
-            "offerCount": "3"
-        },
-        "brand": {
-            "@type": "Brand",
-            "name": "DC Bots"
-        }
-    }
+</head>
+<body>
+    <div class="loader-wrapper" id="loader">
+        <div class="loader">
+            <div class="loader-logo">⚔️</div>
+            <div class="loader-text">DC Bots</div>
+            <div class="loader-dots">
+                <div class="loader-dot"></div>
+                <div class="loader-dot"></div>
+                <div class="loader-dot"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('loader');
+            loader.classList.add('hide');
+            setTimeout(() => {
+                loader.remove();
+            }, 500);
+        });
     </script>
+
+    <header class="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">DC<span>Bots</span></a>
+            <div class="nav">
+                <a href="index.html">Главная</a>
+                <a href="dungeon-crusher.html">Dungeon Crusher</a>
+                <a href="avito-bot.html">Avito Bot</a>
+                <a href="universal-macro.html">Universal Macro</a>
+                <a href="support.html">Поддержка</a>
+                <a href="partners.html">Партнерам</a>
+                <a href="https://t.me/alibobao" target="_blank">Telegram</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>⚔️ Dungeon Crusher Bot</h1>
+            <p>Полная автоматизация осад с интеллектуальной системой обучения. Бот сам адаптируется под ваш стиль игры и предсказывает появление боссов.</p>
+            <div style="margin-top: 30px;">
+                <a href="https://t.me/alibobao" class="btn btn-primary btn-large" target="_blank">Купить лицензию →</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">🧠 ИИ-директор v2.0</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>📈 Самообучение</h3>
+                    <p>Бот анализирует ваши осады, запоминает успешные паттерны и становится умнее с каждой сессией.</p>
+                </div>
+                <div class="card">
+                    <h3>🔮 Предсказание боссов</h3>
+                    <p>Анализирует временные паттерны и сообщает, когда появится следующий босс с точностью до минут.</p>
+                </div>
+                <div class="card">
+                    <h3>🎯 Адаптивная стратегия</h3>
+                    <p>Автоматически выбирает агрессивную, сбалансированную или экономичную тактику под ваши задачи.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">⚙️ Основные возможности</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>🔄 Полный цикл осады</h3>
+                    <p>Выследить → атака → закрытие → назад. Бот делает всё сам, вам остается только запустить.</p>
+                </div>
+                <div class="card">
+                    <h3>👁️ Распознавание кнопок</h3>
+                    <p>OpenCV ищет кнопки на экране даже при смене разрешения или темы игры.</p>
+                </div>
+                <div class="card">
+                    <h3>⛔ Черный список мобов</h3>
+                    <p>Укажите имена мобов, которых не нужно атаковать — бот будет их пропускать.</p>
+                </div>
+                <div class="card">
+                    <h3>🛡️ Автовосстановление</h3>
+                    <p>При зависании бот сам восстанавливается и продолжает работу.</p>
+                </div>
+                <div class="card">
+                    <h3>📊 Статистика и графики</h3>
+                    <p>Отслеживайте эффективность, количество осад, убитых боссов и заработанные ресурсы.</p>
+                </div>
+                <div class="card">
+                    <h3>🎨 Современный интерфейс</h3>
+                    <p>Минималистичный дизайн, удобная навигация, вкладка AI Analytics с графиками обучения.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: #0f0f0f;">
+        <div class="container">
+            <h2 class="section-title">💎 Тарифы</h2>
+            <div class="grid">
+                <div class="price-card">
+                    <h3>1 месяц</h3>
+                    <div class="price">499 ₽</div>
+                    <ul class="price-list">
+                        <li>✓ Все функции бота</li>
+                        <li>✓ ИИ-директор v2.0</li>
+                        <li>✓ Поддержка в Telegram</li>
+                        <li>✓ Обновления на период лицензии</li>
+                    </ul>
+                    <a href="https://t.me/alibobao" class="btn btn-primary" target="_blank">Купить</a>
+                </div>
+                <div class="price-card">
+                    <h3>3 месяца</h3>
+                    <div class="price">1 199 ₽</div>
+                    <ul class="price-list">
+                        <li>✓ Все функции бота</li>
+                        <li>✓ ИИ-директор v2.0</li>
+                        <li>✓ Поддержка в Telegram</li>
+                        <li>✓ Обновления на период лицензии</li>
+                        <li class="highlight">✓ Экономия 300 ₽</li>
+                    </ul>
+                    <a href="https://t.me/alibobao" class="btn btn-primary" target="_blank">Купить</a>
+                </div>
+                <div class="price-card">
+                    <h3>Навсегда</h3>
+                    <div class="price">2 999 ₽</div>
+                    <ul class="price-list">
+                        <li>✓ Все функции бота</li>
+                        <li>✓ ИИ-директор v2.0</li>
+                        <li>✓ Бессрочная поддержка</li>
+                        <li>✓ Все будущие обновления</li>
+                        <li class="highlight">✓ Лучшая цена</li>
+                    </ul>
+                    <a href="https://t.me/alibobao" class="btn btn-primary" target="_blank">Купить</a>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 30px; color: #a0a0a0;">После оплаты вы получите лицензионный ключ и ссылку на скачивание</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">❓ Часто задаваемые вопросы</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>Нужно ли устанавливать Python?</h4>
+                    <p>Нет. Бот поставляется в виде готового EXE файла — установил и запустил.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Блокируют ли игру за использование бота?</h4>
+                    <p>Бот эмулирует действия мыши и клавиатуры, не вмешивается в процесс игры. Риск минимален.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Как получить ключ после оплаты?</h4>
+                    <p>Ключ приходит в Telegram в течение 5-15 минут после оплаты.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Можно ли перенести лицензию на другой ПК?</h4>
+                    <p>Лицензия привязывается к HWID компьютера. При смене ПК — обратитесь в поддержку.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 DC Bots. Dungeon Crusher Bot — неофициальное ПО, не связано с разработчиками игры.</p>
+            <p style="margin-top: 10px;">По всем вопросам: <a href="https://t.me/alibobao" target="_blank">@alibobao</a></p>
+            <p style="margin-top: 10px;">
+                <a href="index.html">Главная</a> |
+                <a href="dungeon-crusher.html">Dungeon Crusher</a> |
+                <a href="avito-bot.html">Avito Bot</a> |
+                <a href="universal-macro.html">Universal Macro</a> |
+                <a href="support.html">Поддержка</a> |
+                <a href="partners.html">Партнерам</a> |
+                <a href="https://t.me/alibobao">Telegram</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html><!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dungeon Crusher Bot — авто-осады с ИИ-директором v2.0 | DC Bots</title>
+    <meta name="description" content="Автоматическое прохождение осад в Dungeon Crusher. ИИ-директор учится на ваших действиях, предсказывает боссов, распознаёт кнопки через OpenCV. Черный список мобов, автовосстановление.">
+    <meta name="keywords" content="Dungeon Crusher, бот для Dungeon Crusher, автоматизация осад, ИИ-директор, фарм в Dungeon Crusher, осады, боссы">
+    <meta name="author" content="DC Bots">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%235a67d8'/%3E%3Ctext x='50' y='67' text-anchor='middle' fill='white' font-size='50' font-weight='bold'%3EDC%3C/text%3E%3C/svg%3E">
+    <link rel="canonical" href="https://www.dsbot.su/dungeon-crusher.html">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="loader-wrapper" id="loader">
