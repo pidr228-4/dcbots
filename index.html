@@ -10,488 +10,53 @@
     <meta name="robots" content="index, follow">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%235a67d8'/%3E%3Ctext x='50' y='67' text-anchor='middle' fill='white' font-size='50' font-weight='bold'%3EDC%3C/text%3E%3C/svg%3E">
     <link rel="canonical" href="https://www.dsbot.su/">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
-            background: #0a0a0a;
-            color: #e0e0e0;
-            line-height: 1.5;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .header {
-            padding: 20px 0;
-            border-bottom: 1px solid #2a2a2a;
-            background: #0a0a0a;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #5a67d8;
-            text-decoration: none;
-        }
-
-        .logo span {
-            color: #e0e0e0;
-        }
-
-        .nav {
-            display: flex;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .nav a {
-            color: #e0e0e0;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .nav a:hover {
-            color: #5a67d8;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 28px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.2s;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background: #5a67d8;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #6c63ff;
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            border: 1px solid #5a67d8;
-            color: #5a67d8;
-            background: transparent;
-        }
-
-        .btn-outline:hover {
-            background: #5a67d8;
-            color: white;
-        }
-
-        .hero {
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #5a67d8, #9f7aea);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .hero p {
-            font-size: 18px;
-            color: #a0a0a0;
-            max-width: 600px;
-            margin: 0 auto 30px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .bots {
-            padding: 60px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 32px;
-            margin-bottom: 40px;
-            color: white;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-
-        .bot-card {
-            background: #141414;
-            border: 1px solid #2a2a2a;
-            border-radius: 16px;
-            padding: 24px;
-            transition: transform 0.2s, border-color 0.2s;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .bot-card:hover {
-            transform: translateY(-5px);
-            border-color: #5a67d8;
-        }
-
-        .bot-icon {
-            font-size: 48px;
-            margin-bottom: 16px;
-        }
-
-        .bot-card h3 {
-            font-size: 22px;
-            margin-bottom: 12px;
-            color: white;
-        }
-
-        .bot-card p {
-            color: #a0a0a0;
-            margin-bottom: 20px;
-            font-size: 14px;
-        }
-
-        .bot-features {
-            list-style: none;
-            margin-bottom: 24px;
-            flex-grow: 1;
-        }
-
-        .bot-features li {
-            padding: 6px 0;
-            color: #b0b0b0;
-            font-size: 13px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .bot-features li::before {
-            content: "✓";
-            color: #5a67d8;
-            font-weight: bold;
-        }
-
-        .price {
-            font-size: 24px;
-            font-weight: bold;
-            color: #5a67d8;
-            margin-bottom: 16px;
-        }
-
-        .price small {
-            font-size: 14px;
-            color: #a0a0a0;
-            font-weight: normal;
-        }
-
-        .bot-link {
-            display: inline-block;
-            padding: 10px 20px;
-            background: #2a2a2a;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: background 0.2s;
-            text-align: center;
-        }
-
-        .bot-link:hover {
-            background: #5a67d8;
-        }
-
-        .features {
-            background: #0f0f0f;
-            padding: 60px 0;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-item {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .feature-icon {
-            font-size: 40px;
-            margin-bottom: 16px;
-        }
-
-        .feature-item h4 {
-            margin-bottom: 10px;
-            color: white;
-        }
-
-        .feature-item p {
-            color: #a0a0a0;
-            font-size: 14px;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(4px);
-        }
-
-        .modal-content {
-            background: #141414;
-            margin: 10% auto;
-            padding: 0;
-            width: 90%;
-            max-width: 500px;
-            border-radius: 20px;
-            border: 1px solid #2a2a2a;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            animation: modalFadeIn 0.3s ease;
-        }
-
-        @keyframes modalFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
+    <link rel="stylesheet" href="css/style.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "DC Bots",
+        "url": "https://www.dsbot.su/",
+        "logo": "https://www.dsbot.su/favicon.ico",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "",
+            "contactType": "customer service",
+            "areaServed": "RU",
+            "availableLanguage": "Russian"
+        },
+        "sameAs": [
+            "https://t.me/alibobao"
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Наши боты",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Avito Bot",
+                "url": "https://www.dsbot.su/avito-bot.html"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Dungeon Crusher Bot",
+                "url": "https://www.dsbot.su/dungeon-crusher.html"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Universal Macro Bot",
+                "url": "https://www.dsbot.su/universal-macro.html"
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .modal-header {
-            padding: 20px 25px;
-            border-bottom: 1px solid #2a2a2a;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #1a1a1a;
-            border-radius: 20px 20px 0 0;
-        }
-
-        .modal-header h2 {
-            color: #e0e0e0;
-            font-size: 22px;
-            font-weight: 600;
-        }
-
-        .modal-header h2 span {
-            color: #5a67d8;
-        }
-
-        .close-modal {
-            color: #888;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.2s;
-            line-height: 1;
-        }
-
-        .close-modal:hover {
-            color: #e53e3e;
-        }
-
-        .modal-body {
-            padding: 25px;
-            background: #141414;
-            border-radius: 0 0 20px 20px;
-        }
-
-        .modal-body input,
-        .modal-body textarea {
-            width: 100%;
-            padding: 12px 16px;
-            margin-bottom: 15px;
-            background: #1e1e1e;
-            border: 1px solid #2a2a2a;
-            border-radius: 10px;
-            color: #e0e0e0;
-            font-family: inherit;
-            font-size: 14px;
-            transition: border-color 0.2s;
-        }
-
-        .modal-body input:focus,
-        .modal-body textarea:focus {
-            outline: none;
-            border-color: #5a67d8;
-        }
-
-        .modal-body input::placeholder,
-        .modal-body textarea::placeholder {
-            color: #666;
-        }
-
-        .modal-body textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .modal-body button {
-            width: 100%;
-            background: #5a67d8;
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .modal-body button:hover {
-            background: #6c63ff;
-            transform: translateY(-1px);
-        }
-
-        .footer {
-            border-top: 1px solid #2a2a2a;
-            padding: 40px 0;
-            text-align: center;
-            color: #6c6c6c;
-            font-size: 14px;
-        }
-
-        .footer a {
-            color: #5a67d8;
-            text-decoration: none;
-        }
-
-        .loader-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #0a0a0a;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9998;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-
-        .loader {
-            text-align: center;
-        }
-
-        .loader-logo {
-            font-size: 64px;
-            animation: bounce 1s ease-in-out infinite;
-        }
-
-        .loader-text {
-            margin-top: 20px;
-            font-size: 18px;
-            color: #5a67d8;
-            letter-spacing: 2px;
-            animation: pulse 1.5s ease-in-out infinite;
-        }
-
-        .loader-dots {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .loader-dot {
-            width: 12px;
-            height: 12px;
-            background: #5a67d8;
-            border-radius: 50%;
-            animation: dotPulse 1s ease-in-out infinite;
-        }
-
-        .loader-dot:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .loader-dot:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        @keyframes dotPulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.5); opacity: 0.5; }
-        }
-
-        .loader-wrapper.hide {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 32px;
-            }
-            .hero p {
-                font-size: 16px;
-            }
-            .section-title {
-                font-size: 26px;
-            }
-            .header-inner {
-                flex-direction: column;
-                text-align: center;
-            }
-            .modal-content {
-                margin: 20% auto;
-                width: 95%;
-            }
-        }
-    </style>
+        ]
+    }
+    </script>
 </head>
 <body>
     <div class="loader-wrapper" id="loader">
@@ -644,6 +209,23 @@
             </div>
         </div>
     </section>
+
+    <div class="container">
+        <div class="faq-grid">
+            <div class="faq-item">
+                <h4>❓ Как получить лицензионный ключ?</h4>
+                <p>После оплаты ключ приходит в Telegram в течение 5-15 минут. Если ключ не пришел — напишите @alibobao.</p>
+            </div>
+            <div class="faq-item">
+                <h4>❓ Бот работает на всех разрешениях экрана?</h4>
+                <p>Да, бот адаптируется под ваше разрешение. Рекомендуемое разрешение — 1920x1080.</p>
+            </div>
+            <div class="faq-item">
+                <h4>❓ Можно ли перенести лицензию на другой ПК?</h4>
+                <p>Лицензия привязывается к HWID компьютера. При смене ПК — обратитесь в поддержку.</p>
+            </div>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="container">
