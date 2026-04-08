@@ -263,7 +263,6 @@
             font-size: 14px;
         }
 
-        /* модальное окно - тёмная тема */
         .modal {
             display: none;
             position: fixed;
@@ -543,7 +542,6 @@
         </div>
     </section>
 
-    <!-- Модальное окно с формой - тёмная тема -->
     <div id="ideaModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -618,17 +616,32 @@
         </div>
     </section>
 
-    <!-- ===== БАННЕР (размещён перед блоком "Почему выбирают нас") ===== -->
+    <!-- ===== БАННЕР (исправленный порядок скриптов) ===== -->
+    <!-- Сначала загружаем библиотеку -->
+    <script defer src="https://tube.buzzoola.com/build/buzzlibrary.js"></script>
+    
+    <!-- Потом — контейнер и инициализация (уже после загрузки библиотеки) -->
     <div style="display: flex; justify-content: center; margin: 20px auto; max-width: 1200px; padding: 0 20px;">
         <div class="buzzplayer-1320487"></div>
     </div>
     <script>
-        (window.buzzoolaAdUnits = window.buzzoolaAdUnits || []).push({
-            slot: document.querySelector('.buzzplayer-1320487'),
-            placementId: 1320487,
+        // Ждём, пока загрузится библиотека и DOM
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.buzzoolaAdUnits) {
+                window.buzzoolaAdUnits.push({
+                    slot: document.querySelector('.buzzplayer-1320487'),
+                    placementId: 1320487,
+                });
+            } else {
+                // Если библиотека ещё не загрузилась, создаём массив
+                window.buzzoolaAdUnits = window.buzzoolaAdUnits || [];
+                window.buzzoolaAdUnits.push({
+                    slot: document.querySelector('.buzzplayer-1320487'),
+                    placementId: 1320487,
+                });
+            }
         });
     </script>
-    <script defer src="https://tube.buzzoola.com/build/buzzlibrary.js"></script>
     <!-- ===== КОНЕЦ БАННЕРА ===== -->
 
     <section class="features">
@@ -675,7 +688,6 @@
     </footer>
 
     <script>
-        // модальное окно
         const modal = document.getElementById('ideaModal');
         const openBtn = document.getElementById('openModalBtn');
         const closeBtn = document.querySelector('.close-modal');
@@ -697,7 +709,6 @@
             }
         }
 
-        // отправка формы
         const form = document.getElementById('ideaForm');
         if (form) {
             form.addEventListener('submit', function(e) {
