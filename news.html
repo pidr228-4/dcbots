@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Моды для Survive the Nights — мотоциклы, оружие и транспорт | DC Bots</title>
-    <meta name="description" content="Бесплатные моды для Survive the Nights: мотоциклы (чоппер, эндуро, спортбайк), арбалет с новыми типами болтов, улучшения интерфейса. Скачать моды бесплатно в Steam Workshop.">
-    <meta name="keywords" content="моды для Survive the Nights, Survive the Nights мод мотоцикл, скачать мод на байк, моды на транспорт, арбалет Survive the Nights, моды на оружие">
+    <title>Новости модов | DC Bots</title>
+    <meta name="description" content="Новости о выходе новых модов для Survive the Nights. Бесплатные моды на сайте DC Bots.">
+    <meta name="keywords" content="моды для Survive the Nights, новости модов, DC Bots">
     <meta name="author" content="DC Bots">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.dsbot.su/news.html">
@@ -27,11 +27,6 @@
             border: 1px solid #2a2a2a;
             border-radius: 20px;
             overflow: hidden;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-        .news-card:hover {
-            transform: translateY(-3px);
-            border-color: #5a67d8;
         }
         .news-header {
             padding: 20px 25px 10px 25px;
@@ -67,26 +62,6 @@
         }
         .news-content p {
             margin-bottom: 15px;
-        }
-        .news-features {
-            list-style: none;
-            margin: 15px 0;
-        }
-        .news-features li {
-            padding: 8px 0;
-            padding-left: 24px;
-            position: relative;
-            border-bottom: 1px solid #2a2a2a;
-        }
-        .news-features li:last-child {
-            border-bottom: none;
-        }
-        .news-features li::before {
-            content: "✓";
-            color: #5a67d8;
-            position: absolute;
-            left: 0;
-            font-weight: bold;
         }
         .download-links {
             background: #0f0f0f;
@@ -158,12 +133,6 @@
             max-width: 500px;
             border-radius: 20px;
             border: 1px solid #2a2a2a;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            animation: modalFadeIn 0.3s ease;
-        }
-        @keyframes modalFadeIn {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
         }
         .modal-header {
             padding: 20px 25px;
@@ -185,14 +154,11 @@
             font-size: 28px;
             font-weight: bold;
             cursor: pointer;
-            transition: color 0.2s;
-            line-height: 1;
         }
         .close-modal:hover { color: #e53e3e; }
         .modal-body {
             padding: 25px;
             background: #141414;
-            border-radius: 0 0 20px 20px;
         }
         .modal-body input,
         .modal-body textarea {
@@ -203,16 +169,8 @@
             border: 1px solid #2a2a2a;
             border-radius: 10px;
             color: #e0e0e0;
-            font-family: inherit;
-            font-size: 14px;
-        }
-        .modal-body input:focus,
-        .modal-body textarea:focus {
-            outline: none;
-            border-color: #5a67d8;
         }
         .modal-body textarea {
-            resize: vertical;
             min-height: 120px;
         }
         .modal-body button {
@@ -222,16 +180,9 @@
             border: none;
             padding: 12px;
             border-radius: 10px;
-            font-size: 16px;
-            font-weight: 600;
             cursor: pointer;
         }
-        .modal-body button:hover {
-            background: #6c63ff;
-            transform: translateY(-1px);
-        }
         @media (max-width: 768px) {
-            .news-grid { padding: 0 15px; }
             .news-title { font-size: 20px; }
             .idea-button-wrapper { text-align: center; }
         }
@@ -268,15 +219,15 @@
                 <a href="news.html">Новости</a>
                 <a href="support.html">Поддержка</a>
                 <a href="partners.html">Партнерам</a>
-                
+                <a href="https://t.me/alibobao" target="_blank">Telegram</a>
             </div>
         </div>
     </header>
 
     <section class="hero">
         <div class="container">
-            <h1>📰 Моды для Survive the Nights</h1>
-            <p>Бесплатные моды на транспорт, оружие и улучшения игры</p>
+            <h1>Новости модов</h1>
+            <p>Анонсы и выход новых модов для Survive the Nights</p>
         </div>
     </section>
 
@@ -302,11 +253,11 @@
                     <input type="hidden" name="_subject" value="💡 Новая идея мода с сайта DC Bots">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="box">
-                    <input type="hidden" name="_autoresponse" value="Спасибо за вашу идею мода! Мы обязательно её рассмотрим.">
+                    <input type="hidden" name="_autoresponse" value="Спасибо за идею! Мы её рассмотрим.">
                     <input type="text" name="name" placeholder="Ваше имя" required>
                     <input type="email" name="email" placeholder="Ваш email" required>
-                    <textarea name="message" placeholder="Какой мод вы хотели бы видеть? Опишите идею..." required></textarea>
-                    <button type="submit">📩 Отправить идею</button>
+                    <textarea name="message" placeholder="Опишите идею мода..." required></textarea>
+                    <button type="submit">📩 Отправить</button>
                 </form>
             </div>
         </div>
@@ -331,7 +282,7 @@
                 const response = await fetch('data/news.json');
                 const news = await response.json();
                 if (!news.length) {
-                    container.innerHTML = '<div class="no-news">📭 Скоро здесь появятся новости о новых модах...</div>';
+                    container.innerHTML = '<div class="no-news">Новостей пока нет</div>';
                     return;
                 }
                 container.innerHTML = news.map(item => `
@@ -343,7 +294,6 @@
                         <h2 class="news-title">${item.title}</h2>
                         <div class="news-content">
                             <p>${item.description}</p>
-                            ${item.features ? `<ul class="news-features">${item.features.map(f => `<li>${f}</li>`).join('')}</ul>` : ''}
                             ${item.text ? `<p>${item.text}</p>` : ''}
                         </div>
                         ${item.links ? `
@@ -355,7 +305,7 @@
                     </div>
                 `).join('');
             } catch (error) {
-                container.innerHTML = '<div class="no-news">⚠️ Не удалось загрузить новости. Попробуйте позже.</div>';
+                container.innerHTML = '<div class="no-news">Не удалось загрузить новости</div>';
             }
         }
         loadNews();
@@ -366,12 +316,6 @@
         if (openBtn) openBtn.onclick = () => { modal.style.display = 'block'; document.body.style.overflow = 'hidden'; };
         if (closeBtn) closeBtn.onclick = () => { modal.style.display = 'none'; document.body.style.overflow = 'auto'; };
         window.onclick = (event) => { if (event.target == modal) { modal.style.display = 'none'; document.body.style.overflow = 'auto'; } };
-        const form = document.getElementById('ideaForm');
-        if (form) {
-            form.addEventListener('submit', function(e) {
-                setTimeout(() => { modal.style.display = 'none'; document.body.style.overflow = 'auto'; form.reset(); }, 500);
-            });
-        }
     </script>
 </body>
 </html>
