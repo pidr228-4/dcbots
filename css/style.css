@@ -580,6 +580,113 @@ body {
     visibility: hidden;
 }
 
+/* ===== ПОДДЕРЖКА АВТОРА ===== */
+.support-author {
+    padding: 40px 0;
+    background: #0a0a0a;
+    border-top: 1px solid #2a2a2a;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.support-card {
+    background: #141414;
+    border: 1px solid #3d3d5c;
+    border-radius: 24px;
+    padding: 32px;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.support-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+.support-card h3 {
+    font-size: 24px;
+    color: #ff6b6b;
+    margin-bottom: 12px;
+}
+
+.support-card p {
+    color: #a0a0a0;
+    font-size: 14px;
+    margin-bottom: 24px;
+}
+
+.support-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.btn-donate, .btn-boosty, .btn-crypto {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s;
+    font-size: 14px;
+}
+
+.btn-donate {
+    background: #ff6b6b;
+    color: white;
+}
+
+.btn-donate:hover {
+    background: #ee5a24;
+    transform: translateY(-2px);
+}
+
+.btn-boosty {
+    background: #f59f00;
+    color: white;
+}
+
+.btn-boosty:hover {
+    background: #e67700;
+    transform: translateY(-2px);
+}
+
+.btn-crypto {
+    background: #5a67d8;
+    color: white;
+}
+
+.btn-crypto:hover {
+    background: #6c63ff;
+    transform: translateY(-2px);
+}
+
+.support-note {
+    font-size: 12px;
+    color: #6c6c6c;
+    margin-bottom: 0;
+}
+
+/* Компактный вариант */
+.support-author.compact .support-card {
+    padding: 20px;
+    max-width: 400px;
+}
+
+.support-author.compact .support-icon {
+    font-size: 32px;
+}
+
+.support-author.compact h3 {
+    font-size: 18px;
+}
+
+.support-author.compact .support-buttons {
+    margin-bottom: 0;
+}
+
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -619,5 +726,13 @@ body {
     .modal-content {
         margin: 20% auto;
         width: 95%;
+    }
+    .support-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    .btn-donate, .btn-boosty, .btn-crypto {
+        width: 80%;
+        text-align: center;
     }
 }
