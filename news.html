@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новости и моды | DC Bots</title>
+    <meta name="description" content="Новости проекта DC Bots. Новые моды для игр, обновления ботов, анонсы и события.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%235a67d8'/%3E%3Ctext x='50' y='67' text-anchor='middle' fill='white' font-size='50' font-weight='bold'%3EDC%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Дополнительные стили для новостей */
+        .news-section {
+            padding: 60px 0;
+        }
+        
+        .news-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .news-card {
+            background: #141414;
+            border: 1px solid #2a2a2a;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-3px);
+            border-color: #5a67d8;
+        }
+        
+        .news-header {
+            padding: 20px 25px 10px 25px;
+            border-bottom: 1px solid #2a2a2a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .news-date {
+            color: #5a67d8;
+            font-size: 14px;
+            font-family: monospace;
+        }
+        
+        .news-category {
+            background: #5a67d8;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+        
+        .news-title {
+            font-size: 24px;
+            color: white;
+            padding: 0 25px;
+            margin: 15px 0 10px 0;
+        }
+        
+        .news-content {
+            padding: 0 25px;
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
+        
+        .news-content p {
+            margin-bottom: 15px;
+        }
+        
+        .news-features {
+            list-style: none;
+            margin: 15px 0;
+        }
+        
+        .news-features li {
+            padding: 6px 0;
+            padding-left: 24px;
+            position: relative;
+        }
+        
+        .news-features li::before {
+            content: "✓";
+            color: #5a67d8;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .download-links {
+            background: #0f0f0f;
+            padding: 15px 25px;
+            margin-top: 20px;
+            border-top: 1px solid #2a2a2a;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .download-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #5a67d8;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .download-link:hover {
+            text-decoration: underline;
+        }
+        
+        .no-news {
+            text-align: center;
+            padding: 60px;
+            color: #6c6c6c;
+        }
+        
+        .loader-news {
+            text-align: center;
+            padding: 60px;
+            color: #5a67d8;
+        }
+    </style>
+</head>
+<body>
+    <div class="loader-wrapper" id="loader">
+        <div class="loader">
+            <div class="loader-logo">📰</div>
+            <div class="loader-text">DC Bots</div>
+            <div class="loader-dots">
+                <div class="loader-dot"></div>
+                <div class="loader-dot"></div>
+                <div class="loader-dot"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('loader');
+            loader.classList.add('hide');
+            setTimeout(() => {
+                loader.remove();
+            }, 500);
+        });
+    </script>
+
+    <header class="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">DC<span>Bots</span></a>
+            <div class="nav">
+                <a href="index.html">Главная</a>
+                <a href="dungeon-crusher.html">Dungeon Crusher</a>
+                <a href="avito-bot.html">Avito Bot</a>
+                <a href="universal-macro.html">Universal Macro</a>
+                <a href="news.html">Новости</a>
+                <a href="support.html">Поддержка</a>
+                <a href="partners.html">Партнерам</a>
+                <a href="https://t.me/alibobao" target="_blank">Telegram</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>📰 Новости и обновления</h1>
+            <p>Моды для игр, обновления ботов, анонсы и события проекта DC Bots</p>
+        </div>
+    </section>
+
+    <section class="news-section">
+        <div class="container">
+            <div id="newsContainer" class="news-grid">
+                <div class="loader-news">📡 Загрузка новостей...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ПОДДЕРЖАТЬ АВТОРА ===== -->
+    <section class="support-author compact">
+        <div class="container">
+            <div class="support-card">
+                <div class="support-icon">☕</div>
+                <h3>Поддержать проект</h3>
+                <div class="support-buttons">
+                    <a href="https://www.donationalerts.com/r/alibobao" target="_blank" class="btn-donate">DonationAlerts</a>
+                    <a href="https://boosty.to/dcbots" target="_blank" class="btn-boosty">Boosty</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 DC Bots. Все права защищены.</p>
+            <p style="margin-top: 10px;">
+                <a href="index.html">Главная</a> |
+                <a href="dungeon-crusher.html">Dungeon Crusher</a> |
+                <a href="avito-bot.html">Avito Bot</a> |
+                <a href="universal-macro.html">Universal Macro</a> |
+                <a href="news.html">Новости</a> |
+                <a href="support.html">Поддержка</a> |
+                <a href="partners.html">Партнерам</a> |
+                <a href="license.html">Лицензия</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Загрузка новостей из JSON
+        async function loadNews() {
+            const container = document.getElementById('newsContainer');
+            
+            try {
+                const response = await fetch('data/news.json');
+                const news = await response.json();
+                
+                if (!news.length) {
+                    container.innerHTML = '<div class="no-news">📭 Новостей пока нет. Загляните позже!</div>';
+                    return;
+                }
+                
+                container.innerHTML = news.map(item => `
+                    <div class="news-card">
+                        <div class="news-header">
+                            <span class="news-date">📅 ${item.date}</span>
+                            <span class="news-category">${item.category}</span>
+                        </div>
+                        <h2 class="news-title">${item.title}</h2>
+                        <div class="news-content">
+                            <p>${item.description}</p>
+                            ${item.features ? `
+                                <ul class="news-features">
+                                    ${item.features.map(f => `<li>${f}</li>`).join('')}
+                                </ul>
+                            ` : ''}
+                            ${item.text ? `<p>${item.text}</p>` : ''}
+                        </div>
+                        ${item.links ? `
+                            <div class="download-links">
+                                ${item.links.steam ? `<a href="${item.links.steam}" target="_blank" class="download-link">🎮 Steam Workshop →</a>` : ''}
+                                ${item.links.direct ? `<a href="${item.links.direct}" target="_blank" class="download-link">📥 Прямая ссылка (ZIP) →</a>` : ''}
+                                ${item.links.torrent ? `<a href="${item.links.torrent}" target="_blank" class="download-link">🌀 Скачать торрент →</a>` : ''}
+                            </div>
+                        ` : ''}
+                    </div>
+                `).join('');
+                
+            } catch (error) {
+                console.error('Ошибка загрузки новостей:', error);
+                container.innerHTML = '<div class="no-news">⚠️ Не удалось загрузить новости. Попробуйте позже.</div>';
+            }
+        }
+        
+        loadNews();
+    </script>
+</body>
+</html>
