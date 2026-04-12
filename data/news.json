@@ -1,39 +1,5 @@
 [
     {
-        "date": "12.04.2026",
-        "category": "НОВЫЙ МОД",
-        "title": "🏍️ Motorcycle Pack v1.0 — мотоциклы для Survive the Nights",
-        "description": "Долгожданный мод добавляет в игру 3 модели мотоциклов с реалистичной физикой и звуками.",
-        "features": [
-            "🏍️ Классический чоппер — для дальних поездок по шоссе",
-            "🏍️ Эндуро — проходимый внедорожник для бездорожья",
-            "🏍️ Спортбайк — максимальная скорость на асфальте",
-            "🔧 Возможность крафта и ремонта в гараже",
-            "🔊 Оригинальные звуки двигателей"
-        ],
-        "links": {
-            "steam": "https://steamcommunity.com/sharedfiles/filedetails/?id=XXXXXXXXX",
-            "direct": "https://www.dsbot.su/mods/motorcycle_pack_v1.zip",
-            "torrent": "https://www.dsbot.su/mods/motorcycle_pack_v1.torrent"
-        }
-    },
-    {
-        "date": "10.04.2026",
-        "category": "ОБНОВЛЕНИЕ",
-        "title": "🔫 Crossbow Mod v2.0 — новый контент и улучшения",
-        "description": "Крупное обновление арбалетного мода. Добавлены новые типы болтов и улучшена анимация.",
-        "features": [
-            "💥 Взрывные болты — для борьбы с группами зомби",
-            "🔥 Зажигательные болты — поджигают врагов и окружение",
-            "🎯 Улучшенная анимация перезарядки",
-            "🐛 Исправлены баги с физикой болтов"
-        ],
-        "links": {
-            "steam": "https://steamcommunity.com/sharedfiles/filedetails/?id=XXXXXXXXX",
-            "direct": "https://www.dsbot.su/mods/crossbow_mod_v2.zip"
-        }
-    },
-    {
         "date": "05.04.2026",
         "category": "НОВОСТЬ",
         "title": "📢 DC Bots — теперь и моды для игр!",
