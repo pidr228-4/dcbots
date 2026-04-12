@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Новости и моды | DC Bots</title>
-    <meta name="description" content="Новости проекта DC Bots. Новые моды для игр, обновления ботов, анонсы и события.">
+    <title>Моды для Survive the Nights — мотоциклы, оружие и транспорт | DC Bots</title>
+    <meta name="description" content="Бесплатные моды для Survive the Nights: мотоциклы (чоппер, эндуро, спортбайк), арбалет с новыми типами болтов, улучшения интерфейса. Скачать моды бесплатно в Steam Workshop.">
+    <meta name="keywords" content="моды для Survive the Nights, Survive the Nights мод мотоцикл, скачать мод на байк, моды на транспорт, арбалет Survive the Nights, моды на оружие">
+    <meta name="author" content="DC Bots">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.dsbot.su/news.html">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%235a67d8'/%3E%3Ctext x='50' y='67' text-anchor='middle' fill='white' font-size='50' font-weight='bold'%3EDC%3C/text%3E%3C/svg%3E">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        /* ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ НОВОСТЕЙ */
         .news-section {
             padding: 60px 0;
         }
-        
         .news-grid {
             display: flex;
             flex-direction: column;
@@ -20,7 +22,6 @@
             max-width: 900px;
             margin: 0 auto;
         }
-        
         .news-card {
             background: #141414;
             border: 1px solid #2a2a2a;
@@ -28,12 +29,10 @@
             overflow: hidden;
             transition: transform 0.2s, border-color 0.2s;
         }
-        
         .news-card:hover {
             transform: translateY(-3px);
             border-color: #5a67d8;
         }
-        
         .news-header {
             padding: 20px 25px 10px 25px;
             border-bottom: 1px solid #2a2a2a;
@@ -43,13 +42,11 @@
             flex-wrap: wrap;
             gap: 10px;
         }
-        
         .news-date {
             color: #5a67d8;
             font-size: 14px;
             font-family: monospace;
         }
-        
         .news-category {
             background: #5a67d8;
             color: white;
@@ -57,35 +54,33 @@
             border-radius: 20px;
             font-size: 12px;
         }
-        
         .news-title {
             font-size: 24px;
             color: white;
             padding: 0 25px;
             margin: 15px 0 10px 0;
         }
-        
         .news-content {
             padding: 0 25px;
             color: #b0b0b0;
-            line-height: 1.6;
+            line-height: 1.7;
         }
-        
         .news-content p {
             margin-bottom: 15px;
         }
-        
         .news-features {
             list-style: none;
             margin: 15px 0;
         }
-        
         .news-features li {
-            padding: 6px 0;
+            padding: 8px 0;
             padding-left: 24px;
             position: relative;
+            border-bottom: 1px solid #2a2a2a;
         }
-        
+        .news-features li:last-child {
+            border-bottom: none;
+        }
         .news-features li::before {
             content: "✓";
             color: #5a67d8;
@@ -93,7 +88,6 @@
             left: 0;
             font-weight: bold;
         }
-        
         .download-links {
             background: #0f0f0f;
             padding: 15px 25px;
@@ -103,7 +97,6 @@
             gap: 20px;
             flex-wrap: wrap;
         }
-        
         .download-link {
             display: inline-flex;
             align-items: center;
@@ -112,32 +105,15 @@
             text-decoration: none;
             font-size: 14px;
         }
-        
         .download-link:hover {
             text-decoration: underline;
         }
-        
-        .no-news {
-            text-align: center;
-            padding: 60px;
-            color: #6c6c6c;
-        }
-        
-        .loader-news {
-            text-align: center;
-            padding: 60px;
-            color: #5a67d8;
-        }
-        
-        /* Исправление: белый цвет заголовка на странице новостей */
         .hero h1 {
             color: white !important;
             background: none !important;
             -webkit-background-clip: unset !important;
             background-clip: unset !important;
         }
-        
-        /* Кнопка предложить идею */
         .btn-idea {
             display: inline-flex;
             align-items: center;
@@ -153,21 +129,16 @@
             transition: all 0.2s;
             cursor: pointer;
         }
-        
         .btn-idea:hover {
             background: #5a67d8;
             color: white;
             transform: translateY(-2px);
         }
-        
-        /* Контейнер для кнопки над новостями */
         .idea-button-wrapper {
             max-width: 900px;
             margin: 0 auto 20px auto;
             text-align: right;
         }
-        
-        /* Модальное окно (как на главной) */
         .modal {
             display: none;
             position: fixed;
@@ -179,7 +150,6 @@
             background-color: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(4px);
         }
-        
         .modal-content {
             background: #141414;
             margin: 10% auto;
@@ -191,18 +161,10 @@
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
             animation: modalFadeIn 0.3s ease;
         }
-        
         @keyframes modalFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        
         .modal-header {
             padding: 20px 25px;
             border-bottom: 1px solid #2a2a2a;
@@ -212,17 +174,12 @@
             background: #1a1a1a;
             border-radius: 20px 20px 0 0;
         }
-        
         .modal-header h2 {
             color: #e0e0e0;
             font-size: 22px;
             font-weight: 600;
         }
-        
-        .modal-header h2 span {
-            color: #5a67d8;
-        }
-        
+        .modal-header h2 span { color: #5a67d8; }
         .close-modal {
             color: #888;
             font-size: 28px;
@@ -231,17 +188,12 @@
             transition: color 0.2s;
             line-height: 1;
         }
-        
-        .close-modal:hover {
-            color: #e53e3e;
-        }
-        
+        .close-modal:hover { color: #e53e3e; }
         .modal-body {
             padding: 25px;
             background: #141414;
             border-radius: 0 0 20px 20px;
         }
-        
         .modal-body input,
         .modal-body textarea {
             width: 100%;
@@ -253,25 +205,16 @@
             color: #e0e0e0;
             font-family: inherit;
             font-size: 14px;
-            transition: border-color 0.2s;
         }
-        
         .modal-body input:focus,
         .modal-body textarea:focus {
             outline: none;
             border-color: #5a67d8;
         }
-        
-        .modal-body input::placeholder,
-        .modal-body textarea::placeholder {
-            color: #666;
-        }
-        
         .modal-body textarea {
             resize: vertical;
             min-height: 120px;
         }
-        
         .modal-body button {
             width: 100%;
             background: #5a67d8;
@@ -282,12 +225,15 @@
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s;
         }
-        
         .modal-body button:hover {
             background: #6c63ff;
             transform: translateY(-1px);
+        }
+        @media (max-width: 768px) {
+            .news-grid { padding: 0 15px; }
+            .news-title { font-size: 20px; }
+            .idea-button-wrapper { text-align: center; }
         }
     </style>
 </head>
@@ -303,14 +249,11 @@
             </div>
         </div>
     </div>
-
     <script>
         window.addEventListener('load', function() {
             const loader = document.getElementById('loader');
             loader.classList.add('hide');
-            setTimeout(() => {
-                loader.remove();
-            }, 500);
+            setTimeout(() => { loader.remove(); }, 500);
         });
     </script>
 
@@ -332,27 +275,22 @@
 
     <section class="hero">
         <div class="container">
-            <h1>📰 Новости и обновления</h1>
-            <p>Моды для игр, обновления ботов, анонсы и события проекта DC Bots</p>
+            <h1>📰 Моды для Survive the Nights</h1>
+            <p>Бесплатные моды на транспорт, оружие и улучшения игры</p>
         </div>
     </section>
 
     <section class="news-section">
         <div class="container">
-            <!-- КНОПКА ПРЕДЛОЖИТЬ ИДЕЮ МОДА (ОТКРЫВАЕТ МОДАЛЬНОЕ ОКНО) -->
             <div class="idea-button-wrapper">
-                <button class="btn-idea" id="openModalBtn">
-                    💡 Предложить идею мода
-                </button>
+                <button class="btn-idea" id="openModalBtn">💡 Предложить идею мода</button>
             </div>
-            
             <div id="newsContainer" class="news-grid">
-                <div class="loader-news">📡 Загрузка новостей...</div>
+                <div class="loader-news">📡 Загрузка...</div>
             </div>
         </div>
     </section>
 
-    <!-- ===== МОДАЛЬНОЕ ОКНО ===== -->
     <div id="ideaModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -364,8 +302,7 @@
                     <input type="hidden" name="_subject" value="💡 Новая идея мода с сайта DC Bots">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="box">
-                    <input type="hidden" name="_autoresponse" value="Спасибо за вашу идею мода! Мы обязательно её рассмотрим и ответим в ближайшее время.">
-                    
+                    <input type="hidden" name="_autoresponse" value="Спасибо за вашу идею мода! Мы обязательно её рассмотрим.">
                     <input type="text" name="name" placeholder="Ваше имя" required>
                     <input type="email" name="email" placeholder="Ваш email" required>
                     <textarea name="message" placeholder="Какой мод вы хотели бы видеть? Опишите идею..." required></textarea>
@@ -375,50 +312,28 @@
         </div>
     </div>
 
-    <!-- ===== ПОДДЕРЖАТЬ АВТОРА ===== -->
-    <section class="support-author compact">
-        <div class="container">
-            <div class="support-card">
-                <div class="support-icon">☕</div>
-                <h3>Поддержать проект</h3>
-                <div class="support-buttons">
-                    <a href="https://www.donationalerts.com/r/alibobao" target="_blank" class="btn-donate">DonationAlerts</a>
-                    <a href="https://boosty.to/dcbots" target="_blank" class="btn-boosty">Boosty</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <footer class="footer">
         <div class="container">
-            <p>© 2026 DC Bots. Все права защищены.</p>
+            <p>© 2026 DC Bots. Бесплатные моды для Survive the Nights.</p>
             <p style="margin-top: 10px;">
                 <a href="index.html">Главная</a> |
-                <a href="dungeon-crusher.html">Dungeon Crusher</a> |
-                <a href="avito-bot.html">Avito Bot</a> |
-                <a href="universal-macro.html">Universal Macro</a> |
                 <a href="news.html">Новости</a> |
                 <a href="support.html">Поддержка</a> |
-                <a href="partners.html">Партнерам</a> |
-                <a href="license.html">Лицензия</a>
+                <a href="https://t.me/alibobao">Telegram</a>
             </p>
         </div>
     </footer>
 
     <script>
-        // Загрузка новостей из JSON
         async function loadNews() {
             const container = document.getElementById('newsContainer');
-            
             try {
                 const response = await fetch('data/news.json');
                 const news = await response.json();
-                
                 if (!news.length) {
-                    container.innerHTML = '<div class="no-news">📭 Новостей пока нет. Загляните позже!</div>';
+                    container.innerHTML = '<div class="no-news">📭 Скоро здесь появятся новости о новых модах...</div>';
                     return;
                 }
-                
                 container.innerHTML = news.map(item => `
                     <div class="news-card">
                         <div class="news-header">
@@ -428,65 +343,33 @@
                         <h2 class="news-title">${item.title}</h2>
                         <div class="news-content">
                             <p>${item.description}</p>
-                            ${item.features ? `
-                                <ul class="news-features">
-                                    ${item.features.map(f => `<li>${f}</li>`).join('')}
-                                </ul>
-                            ` : ''}
+                            ${item.features ? `<ul class="news-features">${item.features.map(f => `<li>${f}</li>`).join('')}</ul>` : ''}
                             ${item.text ? `<p>${item.text}</p>` : ''}
                         </div>
                         ${item.links ? `
                             <div class="download-links">
                                 ${item.links.steam ? `<a href="${item.links.steam}" target="_blank" class="download-link">🎮 Steam Workshop →</a>` : ''}
                                 ${item.links.direct ? `<a href="${item.links.direct}" target="_blank" class="download-link">📥 Прямая ссылка →</a>` : ''}
-                                ${item.links.torrent ? `<a href="${item.links.torrent}" target="_blank" class="download-link">🌀 Скачать торрент →</a>` : ''}
                             </div>
                         ` : ''}
                     </div>
                 `).join('');
-                
             } catch (error) {
-                console.error('Ошибка загрузки новостей:', error);
                 container.innerHTML = '<div class="no-news">⚠️ Не удалось загрузить новости. Попробуйте позже.</div>';
             }
         }
-        
         loadNews();
-        
-        // ===== МОДАЛЬНОЕ ОКНО =====
+
         const modal = document.getElementById('ideaModal');
         const openBtn = document.getElementById('openModalBtn');
         const closeBtn = document.querySelector('.close-modal');
-        
-        if (openBtn) {
-            openBtn.onclick = function() {
-                modal.style.display = 'block';
-                document.body.style.overflow = 'hidden';
-            }
-        }
-        
-        if (closeBtn) {
-            closeBtn.onclick = function() {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
-        
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
-        
+        if (openBtn) openBtn.onclick = () => { modal.style.display = 'block'; document.body.style.overflow = 'hidden'; };
+        if (closeBtn) closeBtn.onclick = () => { modal.style.display = 'none'; document.body.style.overflow = 'auto'; };
+        window.onclick = (event) => { if (event.target == modal) { modal.style.display = 'none'; document.body.style.overflow = 'auto'; } };
         const form = document.getElementById('ideaForm');
         if (form) {
             form.addEventListener('submit', function(e) {
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                    form.reset();
-                }, 500);
+                setTimeout(() => { modal.style.display = 'none'; document.body.style.overflow = 'auto'; form.reset(); }, 500);
             });
         }
     </script>
