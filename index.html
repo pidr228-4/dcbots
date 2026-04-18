@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
 	<head>
-		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="shortcut icon" href="/favicon.ico" />
-		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-		<meta name="apple-mobile-web-app-title" content="Digital Craft" />
-		<link rel="manifest" href="/site.webmanifest" />
 		<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 				<title>DC Bots — автоматизация Avito, игр и макросов</title>
@@ -14,118 +8,25 @@
 					<meta name="keywords" content="автоматизация, бот для авито, бот для игр, макросы">
 						<meta name="author" content="DC Bots">
 							<meta name="robots" content="index, follow">
-								<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234a5a6a'/%3E%3Ctext x='50' y='67' text-anchor='middle' fill='white' font-size='50' font-weight='500'%3EDC%3C/text%3E%3C/svg%3E">
-									<link rel="canonical" href="https://www.dsbot.su/">
-										<link rel="preconnect" href="https://fonts.googleapis.com">
-											<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-												<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-													<style>
-														* { margin: 0; padding: 0; box-sizing: border-box; }
-														:root {
-														--bg: #fafbfc; --card: #fff; --border: #e9ebed; --border-hover: #d9dce0;
-														--text: #1a1e24; --text-secondary: #5a6473; --text-muted: #8a94a3;
-														--accent: #4a5a6a; --accent-hover: #2c3a4a; --cta: #3d4e5e; --cta-hover: #2c3a4a;
-														}
-														body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; min-height: 100vh; }
-														.container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
-														h1, h2, h3 { font-weight: 500; line-height: 1.25; letter-spacing: -0.01em; }
-														h1 { font-size: clamp(2.25rem, 5vw, 3.5rem); margin-bottom: 1.25rem; }
-														h2 { font-size: clamp(1.75rem, 3.5vw, 2.25rem); margin-bottom: 0.75rem; }
-														.header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 14px 0; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
-														.header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
-														.logo { font-size: 24px; font-weight: 500; color: var(--text); text-decoration: none; }
-														.logo span { color: var(--accent); }
-														.nav { display: flex; gap: 36px; flex-wrap: wrap; }
-														.nav a { color: var(--text-secondary); text-decoration: none; font-weight: 450; font-size: 15px; padding: 6px 0; }
-														.nav a:hover { color: var(--text); }
-														.btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 24px; border-radius: 12px; text-decoration: none; font-weight: 450; font-size: 15px; transition: all 0.2s; cursor: pointer; border: none; gap: 8px; white-space: nowrap; }
-														.btn-primary { background: var(--accent); color: white; }
-														.btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-														.btn-outline { background: transparent; border: 1px solid var(--border-hover); color: var(--text); }
-														.btn-outline:hover { border-color: var(--accent); background: #f5f6f8; }
-														.btn-buy { background: var(--cta); color: white; font-weight: 500; padding: 12px 28px; box-shadow: 0 4px 14px rgba(61,78,94,0.15); border-radius: 40px; }
-														.btn-buy:hover { background: var(--cta-hover); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(61,78,94,0.2); }
-														.hero { padding: 150px 0 90px; text-align: center; }
-														.hero p { font-size: 1.2rem; color: var(--text-secondary); max-width: 560px; margin: 0 auto 36px; }
-														.hero-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-														.hero-buttons .btn-primary { background: var(--cta); box-shadow: 0 4px 14px rgba(61,78,94,0.15); font-weight: 500; padding: 14px 32px; }
-														.bots { padding: 70px 0; }
-														.section-title { text-align: center; margin-bottom: 48px; }
-														.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; }
-														.bot-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; display: flex; flex-direction: column; box-shadow: 0 1px 3px rgba(0,0,0,0.04); transition: all 0.2s; }
-														.bot-card:hover { transform: translateY(-4px); border-color: var(--border-hover); box-shadow: 0 12px 28px rgba(0,0,0,0.08); }
-														.bot-card h3 { font-size: 22px; margin-bottom: 10px; }
-														.bot-card p { color: var(--text-secondary); margin-bottom: 20px; font-size: 14px; flex-grow: 1; }
-														.bot-features { list-style: none; margin-bottom: 28px; }
-														.bot-features li { padding: 7px 0; color: var(--text-secondary); font-size: 14px; display: flex; align-items: center; gap: 10px; }
-														.bot-features li::before { content: "—"; color: var(--accent); }
-														.price { font-size: 28px; font-weight: 500; margin-bottom: 20px; }
-														.price small { font-size: 14px; color: var(--text-muted); font-weight: 400; }
-														.bot-actions { display: flex; gap: 10px; margin-top: 10px; }
-														.bot-actions .btn-buy { flex: 1; }
-														.bot-actions .bot-link { flex: 1; display: inline-flex; align-items: center; justify-content: center; padding: 12px 22px; background: #f5f6f8; border: 1px solid var(--border); color: var(--text); text-decoration: none; border-radius: 40px; font-weight: 450; font-size: 14px; }
-														.bot-actions .bot-link:hover { background: var(--bg); border-color: var(--border-hover); }
-														.features { padding: 70px 0; background: transparent; }
-														.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 28px; }
-														.feature-item { text-align: center; padding: 28px 22px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; }
-														.feature-item h4 { margin-bottom: 10px; font-size: 18px; }
-														.feature-item p { color: var(--text-secondary); font-size: 14px; }
-														.support-author { padding: 60px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-														.support-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 40px 36px; text-align: center; max-width: 650px; margin: 0 auto; }
-														.support-card h3 { font-size: 26px; margin-bottom: 14px; }
-														.support-card p { color: var(--text-secondary); margin-bottom: 30px; }
-														.support-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-														.btn-donate, .btn-boosty, .btn-crypto { padding: 12px 24px; border-radius: 40px; text-decoration: none; font-weight: 450; font-size: 14px; border: 1px solid var(--border); background: #f5f6f8; color: var(--text); }
-														.btn-donate:hover, .btn-boosty:hover, .btn-crypto:hover { background: var(--bg); border-color: var(--border-hover); }
-														.support-note { font-size: 13px; color: var(--text-muted); margin-top: 18px; }
 
-														/* Модальные окна */
-														.modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); align-items: center; justify-content: center; }
-														.modal-content { background: var(--card); width: 90%; max-width: 650px; max-height: 80vh; overflow-y: auto; border-radius: 20px; border: 1px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
-														.modal-header { padding: 22px 26px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: var(--card); z-index: 10; }
-														.modal-header h2 { font-size: 22px; margin: 0; font-weight: 500; }
-														.close-modal { color: var(--text-muted); font-size: 28px; cursor: pointer; line-height: 1; }
-														.close-modal:hover { color: var(--text); }
-														.modal-body { padding: 24px; }
-														.modal-body input, .modal-body textarea, .modal-body select { width: 100%; padding: 13px 16px; margin-bottom: 16px; background: #f5f6f8; border: 1px solid var(--border); border-radius: 12px; font-family: inherit; font-size: 15px; }
-														.modal-body input:focus, .modal-body textarea:focus, .modal-body select:focus { outline: none; border-color: var(--accent); }
-														.modal-body textarea { resize: vertical; min-height: 100px; }
-														.modal-body button { width: 100%; background: var(--cta); color: white; border: none; padding: 14px; border-radius: 40px; font-size: 15px; font-weight: 500; cursor: pointer; box-shadow: 0 4px 14px rgba(61,78,94,0.15); }
-														.modal-body button:hover { background: var(--cta-hover); }
-														.detail-section { margin-bottom: 20px; }
-														.detail-section h3 { font-size: 16px; margin-bottom: 10px; color: var(--text); }
-														.detail-section ul { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px 16px; }
-														.detail-section li { padding: 5px 0; color: var(--text-secondary); font-size: 13px; display: flex; align-items: center; gap: 8px; }
-														.detail-section li::before { content: "—"; color: var(--accent); }
-														.price-block { text-align: center; padding: 16px; background: #f5f6f8; border-radius: 12px; margin: 16px 0; }
-														.price-block .price { font-size: 32px; margin-bottom: 5px; }
+								<!-- Фавиконы -->
+								<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+									<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+										<link rel="shortcut icon" href="/favicon.ico">
+											<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+												<meta name="apple-mobile-web-app-title" content="DC Bots">
+													<link rel="manifest" href="/site.webmanifest">
 
-														.footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; color: var(--text-muted); font-size: 14px; }
-														.footer a { color: var(--accent); text-decoration: none; }
-														.footer a:hover { color: var(--accent-hover); text-decoration: underline; }
-														.loader-wrapper { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg); display: flex; justify-content: center; align-items: center; z-index: 9998; transition: opacity 0.4s; }
-														.loader { text-align: center; }
-														.loader-logo { font-size: 48px; font-weight: 300; color: var(--accent); }
-														.loader-text { margin-top: 16px; font-size: 16px; color: var(--accent); }
-														.loader-dots { display: flex; justify-content: center; gap: 8px; margin-top: 16px; }
-														.loader-dot { width: 10px; height: 10px; background: var(--accent); border-radius: 50%; animation: dotPulse 1.2s infinite; }
-														.loader-dot:nth-child(2) { animation-delay: 0.2s; }
-														.loader-dot:nth-child(3) { animation-delay: 0.4s; }
-														@keyframes dotPulse { 0%,100%{opacity:0.6;transform:scale(1);} 50%{opacity:1;transform:scale(1.4);} }
-														.loader-wrapper.hide { opacity: 0; visibility: hidden; }
-														@media (max-width: 768px) {
-														.container { padding: 0 18px; }
-														.hero { padding: 130px 0 60px; }
-														.header-inner { flex-direction: column; text-align: center; }
-														.nav { justify-content: center; gap: 22px; }
-														.grid { grid-template-columns: 1fr; }
-														.support-buttons { flex-direction: column; }
-														.btn-donate, .btn-boosty, .btn-crypto { width: 100%; }
-														.bot-actions { flex-direction: column; }
-														.detail-section ul { grid-template-columns: 1fr; }
-														}
-													</style>
-												</head>
+														<link rel="canonical" href="https://www.dsbot.su/">
+
+															<!-- Шрифт Inter -->
+															<link rel="preconnect" href="https://fonts.googleapis.com">
+																<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+																	<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+																		<!-- Основной CSS -->
+																		<link rel="stylesheet" href="css/style.css">
+</head>
 	<body>
 		<div class="loader-wrapper" id="loader">
 			<div class="loader">
