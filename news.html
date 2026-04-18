@@ -1,321 +1,151 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Новости модов | DC Bots</title>
-    <meta name="description" content="Новости о выходе новых модов для Survive the Nights. Бесплатные моды на сайте DC Bots.">
-    <meta name="keywords" content="моды для Survive the Nights, новости модов, DC Bots">
-    <meta name="author" content="DC Bots">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://www.dsbot.su/news.html">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%235a67d8'/%3E%3Ctext x='50' y='67' text-anchor='middle' fill='white' font-size='50' font-weight='bold'%3EDC%3C/text%3E%3C/svg%3E">
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        .news-section {
-            padding: 60px 0;
-        }
-        .news-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .news-card {
-            background: #141414;
-            border: 1px solid #2a2a2a;
-            border-radius: 20px;
-            overflow: hidden;
-        }
-        .news-header {
-            padding: 20px 25px 10px 25px;
-            border-bottom: 1px solid #2a2a2a;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .news-date {
-            color: #5a67d8;
-            font-size: 14px;
-            font-family: monospace;
-        }
-        .news-category {
-            background: #5a67d8;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-        }
-        .news-title {
-            font-size: 24px;
-            color: white;
-            padding: 0 25px;
-            margin: 15px 0 10px 0;
-        }
-        .news-content {
-            padding: 0 25px;
-            color: #b0b0b0;
-            line-height: 1.7;
-        }
-        .news-content p {
-            margin-bottom: 15px;
-        }
-        .download-links {
-            background: #0f0f0f;
-            padding: 15px 25px;
-            margin-top: 20px;
-            border-top: 1px solid #2a2a2a;
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        .download-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: #5a67d8;
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .download-link:hover {
-            text-decoration: underline;
-        }
-        .hero h1 {
-            color: white !important;
-            background: none !important;
-            -webkit-background-clip: unset !important;
-            background-clip: unset !important;
-        }
-        .btn-idea {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: transparent;
-            border: 1px solid #5a67d8;
-            color: #5a67d8;
-            padding: 8px 18px;
-            border-radius: 40px;
-            font-size: 14px;
-            font-weight: 500;
-            text-decoration: none;
-            transition: all 0.2s;
-            cursor: pointer;
-        }
-        .btn-idea:hover {
-            background: #5a67d8;
-            color: white;
-            transform: translateY(-2px);
-        }
-        .idea-button-wrapper {
-            max-width: 900px;
-            margin: 0 auto 20px auto;
-            text-align: right;
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(4px);
-        }
-        .modal-content {
-            background: #141414;
-            margin: 10% auto;
-            padding: 0;
-            width: 90%;
-            max-width: 500px;
-            border-radius: 20px;
-            border: 1px solid #2a2a2a;
-        }
-        .modal-header {
-            padding: 20px 25px;
-            border-bottom: 1px solid #2a2a2a;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #1a1a1a;
-            border-radius: 20px 20px 0 0;
-        }
-        .modal-header h2 {
-            color: #e0e0e0;
-            font-size: 22px;
-            font-weight: 600;
-        }
-        .modal-header h2 span { color: #5a67d8; }
-        .close-modal {
-            color: #888;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .close-modal:hover { color: #e53e3e; }
-        .modal-body {
-            padding: 25px;
-            background: #141414;
-        }
-        .modal-body input,
-        .modal-body textarea {
-            width: 100%;
-            padding: 12px 16px;
-            margin-bottom: 15px;
-            background: #1e1e1e;
-            border: 1px solid #2a2a2a;
-            border-radius: 10px;
-            color: #e0e0e0;
-        }
-        .modal-body textarea {
-            min-height: 120px;
-        }
-        .modal-body button {
-            width: 100%;
-            background: #5a67d8;
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-        @media (max-width: 768px) {
-            .news-title { font-size: 20px; }
-            .idea-button-wrapper { text-align: center; }
-        }
-    </style>
-</head>
-<body>
-    <div class="loader-wrapper" id="loader">
-        <div class="loader">
-            <div class="loader-logo">📰</div>
-            <div class="loader-text">DC Bots</div>
-            <div class="loader-dots">
-                <div class="loader-dot"></div>
-                <div class="loader-dot"></div>
-                <div class="loader-dot"></div>
-            </div>
-        </div>
-    </div>
-    <script>
-        window.addEventListener('load', function() {
-            const loader = document.getElementById('loader');
-            loader.classList.add('hide');
-            setTimeout(() => { loader.remove(); }, 500);
-        });
-    </script>
+	<head>
+		<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<title>Новости | DC Bots</title>
+				<meta name="description" content="Новости DC Bots">
+					<meta name="robots" content="index, follow">
+						<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234a5a6a'/%3E%3Ctext x='50' y='67' text-anchor='middle' fill='white' font-size='50' font-weight='500'%3EDC%3C/text%3E%3C/svg%3E">
+							<link rel="preconnect" href="https://fonts.googleapis.com">
+								<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+									<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+										<style>
+											* { margin: 0; padding: 0; box-sizing: border-box; }
+											:root {
+											--bg: #fafbfc; --card: #fff; --border: #e9ebed; --border-hover: #d9dce0;
+											--text: #1a1e24; --text-secondary: #5a6473; --text-muted: #8a94a3;
+											--accent: #4a5a6a; --accent-hover: #2c3a4a;
+											}
+											body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; min-height: 100vh; }
+											.container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+											.header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 14px 0; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+											.header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+											.logo { font-size: 24px; font-weight: 500; color: var(--text); text-decoration: none; }
+											.logo span { color: var(--accent); }
+											.nav { display: flex; gap: 36px; flex-wrap: wrap; }
+											.nav a { color: var(--text-secondary); text-decoration: none; font-weight: 450; font-size: 15px; padding: 6px 0; }
+											.nav a:hover { color: var(--text); }
+											.nav a.active { color: var(--text); font-weight: 500; }
+											.page { padding: 130px 0 60px; }
+											h1 { font-size: 2.5rem; font-weight: 500; margin-bottom: 20px; text-align: center; }
+											.news-empty { text-align: center; padding: 60px 20px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; color: var(--text-muted); }
+											.footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; color: var(--text-muted); font-size: 14px; }
+											.footer a { color: var(--accent); text-decoration: none; }
+											.footer a:hover { color: var(--accent-hover); text-decoration: underline; }
+											.loader-wrapper { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg); display: flex; justify-content: center; align-items: center; z-index: 9998; transition: opacity 0.4s; }
+											.loader { text-align: center; }
+											.loader-logo { font-size: 48px; font-weight: 300; color: var(--accent); }
+											.loader-text { margin-top: 16px; font-size: 16px; color: var(--accent); }
+											.loader-dots { display: flex; justify-content: center; gap: 8px; margin-top: 16px; }
+											.loader-dot { width: 10px; height: 10px; background: var(--accent); border-radius: 50%; animation: dotPulse 1.2s infinite; }
+											.loader-dot:nth-child(2) { animation-delay: 0.2s; }
+											.loader-dot:nth-child(3) { animation-delay: 0.4s; }
+											@keyframes dotPulse { 0%,100%{opacity:0.6;transform:scale(1);} 50%{opacity:1;transform:scale(1.4);} }
+											.loader-wrapper.hide { opacity: 0; visibility: hidden; }
+											@media (max-width: 768px) {
+											.header-inner { flex-direction: column; text-align: center; }
+											.nav { justify-content: center; gap: 22px; }
+											h1 { font-size: 2rem; }
+											}
+										</style>
+									</head>
+	<body>
+		<div class="loader-wrapper" id="loader">
+			<div class="loader">
+				<div class="loader-logo">DC</div>
+				<div class="loader-text">DC Bots</div>
+				<div class="loader-dots">
+					<div class="loader-dot"></div>
+					<div class="loader-dot"></div>
+					<div class="loader-dot"></div>
+				</div>
+			</div>
+		</div>
+		<script>
+			window.addEventListener('load', function() {
+			const loader = document.getElementById('loader');
+			loader.classList.add('hide');
+			setTimeout(() => loader.remove(), 400);
+			});
+		</script>
 
-    <header class="header">
-        <div class="container header-inner">
-            <a href="index.html" class="logo">DC<span>Bots</span></a>
-            <div class="nav">
-                <a href="index.html">Главная</a>
-                <a href="dungeon-crusher.html">Dungeon Crusher</a>
-                <a href="avito-bot.html">Avito Bot</a>
-                <a href="universal-macro.html">Universal Macro</a>
-                <a href="news.html">Новости</a>
-                <a href="support.html">Поддержка</a>
-                <a href="partners.html">Партнерам</a>
-               
-            </div>
-        </div>
-    </header>
+		<header class="header">
+			<div class="container header-inner">
+				<a href="index.html" class="logo">
+					DC<span>Bots</span>
+				</a>
+				<div class="nav">
+					<a href="index.html">Главная</a>
+					<a href="news.html" class="active">Новости</a>
+					<a href="support.html">Поддержка</a>
+					<a href="partners.html">Партнёрам</a>
+				</div>
+			</div>
+		</header>
 
-    <section class="hero">
-        <div class="container">
-            <h1>Новости модов</h1>
-            <p>Анонсы и выход новых модов для игр</p>
-        </div>
-    </section>
+		<section class="page">
+			<div class="container">
+				<h1>Новости</h1>
+				<div class="news-empty">
+					<p>Новостей пока нет</p>
+				</div>
+			</div>
+		</section>
 
-    <section class="news-section">
-        <div class="container">
-            <div class="idea-button-wrapper">
-                <button class="btn-idea" id="openModalBtn">💡 Предложить идею мода</button>
-            </div>
-            <div id="newsContainer" class="news-grid">
-                <div class="loader-news">📡 Загрузка...</div>
-            </div>
-        </div>
-    </section>
+		<footer class="footer">
+			<div class="container">
+				<p>© 2026 DC Bots. Все права защищены.</p>
+				<p style="margin-top: 10px;">
+					<a href="index.html">Главная</a> |
+					<a href="news.html">Новости</a> |
+					<a href="support.html">Поддержка</a> |
+					<a href="partners.html">Партнёрам</a> |
+					<a href="#" onclick="openLicenseModal(); return false;">Лицензия</a>
+				</p>
+			</div>
+		</footer>
 
-    <div id="ideaModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>💡 <span>Предложить идею мода</span></h2>
-                <span class="close-modal">&times;</span>
-            </div>
-            <div class="modal-body">
-                <form action="https://formsubmit.co/cheltypo@gmail.com" method="POST" id="ideaForm">
-                    <input type="hidden" name="_subject" value="💡 Новая идея мода с сайта DC Bots">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_template" value="box">
-                    <input type="hidden" name="_autoresponse" value="Спасибо за идею! Мы её рассмотрим.">
-                    <input type="text" name="name" placeholder="Ваше имя" required>
-                    <input type="email" name="email" placeholder="Ваш email" required>
-                    <textarea name="message" placeholder="Опишите идею мода..." required></textarea>
-                    <button type="submit">📩 Отправить</button>
-                </form>
-            </div>
-        </div>
-    </div>
+		<!-- Модальное окно лицензии -->
+		<div id="licenseModal" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); align-items: center; justify-content: center;">
+			<div style="background: #fff; width: 90%; max-width: 700px; max-height: 80vh; overflow-y: auto; border-radius: 20px; border: 1px solid #e9ebed;">
+				<div style="padding: 22px 26px; border-bottom: 1px solid #e9ebed; display: flex; justify-content: space-between; align-items: center;">
+					<h2 style="font-size: 22px; font-weight: 500;">Лицензионное соглашение</h2>
+					<span onclick="closeLicenseModal()" style="color: #8a94a3; font-size: 28px; cursor: pointer;">&times;</span>
+				</div>
+				<div style="padding: 24px; color: #5a6473; font-size: 14px; line-height: 1.6;">
+					<p style="margin-bottom: 16px;">© 2026 DC Bots. Все права защищены.</p>
+					<p style="margin-bottom: 16px;">Настоящее лицензионное соглашение регулирует использование материалов сайта dsbot.su и программного обеспечения DC Bots.</p>
+					<h3 style="font-size: 16px; color: #1a1e24; margin: 20px 0 10px;">1. Авторские права</h3>
+					<p>Все материалы сайта являются интеллектуальной собственностью DC Bots.</p>
+					<h3 style="font-size: 16px; color: #1a1e24; margin: 20px 0 10px;">2. Использование материалов</h3>
+					<p>Запрещается копирование, распространение, модификация материалов без письменного разрешения.</p>
+					<h3 style="font-size: 16px; color: #1a1e24; margin: 20px 0 10px;">3. Программное обеспечение</h3>
+					<p>Программы распространяются на условиях платной лицензии. Запрещается декомпиляция и передача ключей третьим лицам.</p>
+					<h3 style="font-size: 16px; color: #1a1e24; margin: 20px 0 10px;">4. Контакты</h3>
+					<p>По вопросам: cheltypo@gmail.com</p>
+					<div style="margin-top: 24px;">
+						<button onclick="closeLicenseModal()" style="width: 100%; padding: 14px; background: #3d4e5e; color: white; border: none; border-radius: 40px; font-size: 15px; font-weight: 500; cursor: pointer;">Закрыть</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    <footer class="footer">
-        <div class="container">
-            <p>© 2026 DC Bots. Бесплатные моды для игр.</p>
-            <p style="margin-top: 10px;">
-                <a href="index.html">Главная</a> |
-                <a href="news.html">Новости</a> |
-                <a href="support.html">Поддержка</a> |
-                <a href="https://t.me/alibobao">Telegram</a>
-            </p>
-        </div>
-    </footer>
-
-    <script>
-        async function loadNews() {
-            const container = document.getElementById('newsContainer');
-            try {
-                const response = await fetch('data/news.json');
-                const news = await response.json();
-                if (!news.length) {
-                    container.innerHTML = '<div class="no-news">Новостей пока нет</div>';
-                    return;
-                }
-                container.innerHTML = news.map(item => `
-                    <div class="news-card">
-                        <div class="news-header">
-                            <span class="news-date">📅 ${item.date}</span>
-                            <span class="news-category">${item.category}</span>
-                        </div>
-                        <h2 class="news-title">${item.title}</h2>
-                        <div class="news-content">
-                            <p>${item.description}</p>
-                            ${item.text ? `<p>${item.text}</p>` : ''}
-                        </div>
-                        ${item.links ? `
-                            <div class="download-links">
-                                ${item.links.steam ? `<a href="${item.links.steam}" target="_blank" class="download-link">🎮 Steam Workshop →</a>` : ''}
-                                ${item.links.direct ? `<a href="${item.links.direct}" target="_blank" class="download-link">📥 Прямая ссылка →</a>` : ''}
-                            </div>
-                        ` : ''}
-                    </div>
-                `).join('');
-            } catch (error) {
-                container.innerHTML = '<div class="no-news">Не удалось загрузить новости</div>';
-            }
-        }
-        loadNews();
-
-        const modal = document.getElementById('ideaModal');
-        const openBtn = document.getElementById('openModalBtn');
-        const closeBtn = document.querySelector('.close-modal');
-        if (openBtn) openBtn.onclick = () => { modal.style.display = 'block'; document.body.style.overflow = 'hidden'; };
-        if (closeBtn) closeBtn.onclick = () => { modal.style.display = 'none'; document.body.style.overflow = 'auto'; };
-        window.onclick = (event) => { if (event.target == modal) { modal.style.display = 'none'; document.body.style.overflow = 'auto'; } };
-    </script>
-</body>
+		<script>
+			function openLicenseModal() {
+			document.getElementById('licenseModal').style.display = 'flex';
+			document.body.style.overflow = 'hidden';
+			}
+			function closeLicenseModal() {
+			document.getElementById('licenseModal').style.display = 'none';
+			document.body.style.overflow = 'auto';
+			}
+			window.addEventListener('click', (e) => {
+			if (e.target.id === 'licenseModal') closeLicenseModal();
+			});
+			document.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape') closeLicenseModal();
+			});
+		</script>
+	</body>
 </html>
