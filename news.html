@@ -1,31 +1,34 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-	<link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-	<meta name="apple-mobile-web-app-title" content="Digital Craft" />
-	<link rel="manifest" href="/site.webmanifest" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Новости | DC Bots</title>
     <meta name="description" content="Новости DC Bots — анонсы, обновления, моды.">
     <meta name="robots" content="index, follow">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234a5a6a'/%3E%3Ctext x='50' y='67' text-anchor='middle' fill='white' font-size='50' font-weight='500'%3EDC%3C/text%3E%3C/svg%3E">
+    
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-title" content="DC Bots">
+    <link rel="manifest" href="/site.webmanifest">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --bg: #fafbfc; --card: #fff; --border: #e9ebed; --border-hover: #d9dce0;
-            --text: #1a1e24; --text-secondary: #5a6473; --text-muted: #8a94a3;
-            --accent: #4a5a6a; --accent-hover: #2c3a4a; --cta: #3d4e5e;
+            --bg: #0c0e12; --card: #14171c; --border: #252a33; --border-hover: #3a4150;
+            --text: #e8eaed; --text-secondary: #9aa1af; --text-muted: #606774;
+            --accent: #5a6a7a; --accent-hover: #6e8092; --cta: #4a5a6a;
+            --shadow: 0 4px 16px rgba(0,0,0,0.3); --shadow-hover: 0 8px 24px rgba(0,0,0,0.4);
         }
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; min-height: 100vh; }
         .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
-        .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 14px 0; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+        
+        .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 14px 0; background: rgba(12,14,18,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
         .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
         .logo { font-size: 24px; font-weight: 500; color: var(--text); text-decoration: none; }
         .logo span { color: var(--accent); }
@@ -33,44 +36,42 @@
         .nav a { color: var(--text-secondary); text-decoration: none; font-weight: 450; font-size: 15px; padding: 6px 0; }
         .nav a:hover { color: var(--text); }
         .nav a.active { color: var(--text); font-weight: 500; }
+        
         .page { padding: 130px 0 60px; }
         h1 { font-size: 2.5rem; font-weight: 500; margin-bottom: 20px; text-align: center; }
         
-        /* Новости */
         .news-grid { display: flex; flex-direction: column; gap: 24px; margin-top: 20px; }
-        .news-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; transition: all 0.2s; }
-        .news-card:hover { border-color: var(--border-hover); box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
+        .news-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; box-shadow: var(--shadow); }
         .news-header { padding: 20px 24px 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; border-bottom: 1px solid var(--border); }
         .news-date { color: var(--accent); font-size: 14px; font-weight: 450; }
         .news-category { background: var(--accent); color: white; padding: 4px 14px; border-radius: 40px; font-size: 12px; font-weight: 500; }
         .news-title { font-size: 22px; color: var(--text); padding: 16px 24px 8px; font-weight: 500; }
         .news-content { padding: 0 24px 20px; color: var(--text-secondary); font-size: 15px; line-height: 1.6; }
-        .news-content p { margin-bottom: 12px; }
         .news-links { padding: 0 24px 20px; display: flex; gap: 24px; flex-wrap: wrap; }
-        .news-links a { color: var(--accent); text-decoration: none; font-size: 14px; font-weight: 450; }
+        .news-links a { color: var(--accent); text-decoration: none; font-size: 14px; }
         .news-links a:hover { text-decoration: underline; }
         .news-empty { text-align: center; padding: 60px 20px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; color: var(--text-muted); }
         .idea-button { text-align: right; margin-bottom: 16px; }
-        .btn-idea { background: transparent; border: 1px solid var(--border-hover); color: var(--text); padding: 10px 20px; border-radius: 40px; font-size: 14px; font-weight: 450; cursor: pointer; transition: all 0.2s; }
-        .btn-idea:hover { border-color: var(--accent); background: #f5f6f8; }
+        .btn-idea { background: transparent; border: 1px solid var(--border); color: var(--text); padding: 10px 20px; border-radius: 40px; font-size: 14px; cursor: pointer; transition: all 0.2s; }
+        .btn-idea:hover { border-color: var(--border-hover); background: var(--card); }
         
-        /* Модальные окна */
-        .modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); align-items: center; justify-content: center; }
-        .modal-content { background: var(--card); width: 90%; max-width: 500px; border-radius: 20px; border: 1px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+        .modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(6px); align-items: center; justify-content: center; }
+        .modal-content { background: var(--card); width: 90%; max-width: 500px; border-radius: 20px; border: 1px solid var(--border); box-shadow: var(--shadow-hover); }
         .modal-header { padding: 22px 26px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
         .modal-header h2 { font-size: 22px; margin: 0; font-weight: 500; }
-        .close-modal { color: var(--text-muted); font-size: 28px; cursor: pointer; line-height: 1; }
+        .close-modal { color: var(--text-muted); font-size: 28px; cursor: pointer; }
         .close-modal:hover { color: var(--text); }
         .modal-body { padding: 24px; }
-        .modal-body input, .modal-body textarea { width: 100%; padding: 13px 16px; margin-bottom: 16px; background: #f5f6f8; border: 1px solid var(--border); border-radius: 12px; font-family: inherit; font-size: 15px; }
+        .modal-body input, .modal-body textarea { width: 100%; padding: 13px 16px; margin-bottom: 16px; background: var(--bg); border: 1px solid var(--border); border-radius: 12px; font-family: inherit; font-size: 15px; color: var(--text); }
         .modal-body input:focus, .modal-body textarea:focus { outline: none; border-color: var(--accent); }
         .modal-body textarea { resize: vertical; min-height: 120px; }
-        .modal-body button { width: 100%; background: var(--cta); color: white; border: none; padding: 14px; border-radius: 40px; font-size: 15px; font-weight: 500; cursor: pointer; }
+        .modal-body button { width: 100%; background: var(--cta); color: white; border: none; padding: 14px; border-radius: 40px; font-size: 15px; font-weight: 500; cursor: pointer; box-shadow: var(--shadow); }
         .modal-body button:hover { background: var(--accent-hover); }
         
         .footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; color: var(--text-muted); font-size: 14px; }
         .footer a { color: var(--accent); text-decoration: none; }
         .footer a:hover { color: var(--accent-hover); text-decoration: underline; }
+        
         .loader-wrapper { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg); display: flex; justify-content: center; align-items: center; z-index: 9998; transition: opacity 0.4s; }
         .loader { text-align: center; }
         .loader-logo { font-size: 48px; font-weight: 300; color: var(--accent); }
@@ -79,8 +80,9 @@
         .loader-dot { width: 10px; height: 10px; background: var(--accent); border-radius: 50%; animation: dotPulse 1.2s infinite; }
         .loader-dot:nth-child(2) { animation-delay: 0.2s; }
         .loader-dot:nth-child(3) { animation-delay: 0.4s; }
-        @keyframes dotPulse { 0%,100%{opacity:0.6;transform:scale(1);} 50%{opacity:1;transform:scale(1.4);} }
+        @keyframes dotPulse { 0%,100%{opacity:0.4;transform:scale(1);} 50%{opacity:1;transform:scale(1.4);} }
         .loader-wrapper.hide { opacity: 0; visibility: hidden; }
+        
         @media (max-width: 768px) {
             .header-inner { flex-direction: column; text-align: center; }
             .nav { justify-content: center; gap: 22px; }
@@ -101,13 +103,7 @@
             </div>
         </div>
     </div>
-    <script>
-        window.addEventListener('load', function() {
-            const loader = document.getElementById('loader');
-            loader.classList.add('hide');
-            setTimeout(() => loader.remove(), 400);
-        });
-    </script>
+    <script>window.addEventListener('load',function(){const l=document.getElementById('loader');l.classList.add('hide');setTimeout(()=>l.remove(),400);});</script>
 
     <header class="header">
         <div class="container header-inner">
@@ -124,24 +120,14 @@
     <section class="page">
         <div class="container">
             <h1>Новости</h1>
-            
-            <div class="idea-button">
-                <button class="btn-idea" id="openIdeaModalBtn">Предложить идею мода</button>
-            </div>
-            
-            <div id="newsContainer" class="news-grid">
-                <div style="text-align: center; padding: 40px; color: var(--text-muted);">Загрузка новостей...</div>
-            </div>
+            <div class="idea-button"><button class="btn-idea" id="openIdeaModalBtn">Предложить идею мода</button></div>
+            <div id="newsContainer" class="news-grid"><div style="text-align:center;padding:40px;color:var(--text-muted);">Загрузка новостей...</div></div>
         </div>
     </section>
 
-    <!-- Модальное окно "Предложить идею" -->
     <div id="ideaModal" class="modal">
         <div class="modal-content">
-            <div class="modal-header">
-                <h2>Предложить идею мода</h2>
-                <span class="close-modal" onclick="closeModal('ideaModal')">&times;</span>
-            </div>
+            <div class="modal-header"><h2>Предложить идею мода</h2><span class="close-modal" onclick="closeModal('ideaModal')">&times;</span></div>
             <div class="modal-body">
                 <form action="https://formsubmit.co/cheltypo@gmail.com" method="POST">
                     <input type="hidden" name="_subject" value="Идея мода с сайта DC Bots">
@@ -155,23 +141,19 @@
         </div>
     </div>
 
-    <!-- Модальное окно лицензии -->
     <div id="licenseModal" class="modal">
         <div class="modal-content">
-            <div class="modal-header">
-                <h2>Лицензионное соглашение</h2>
-                <span class="close-modal" onclick="closeModal('licenseModal')">&times;</span>
-            </div>
+            <div class="modal-header"><h2>Лицензионное соглашение</h2><span class="close-modal" onclick="closeModal('licenseModal')">&times;</span></div>
             <div class="modal-body">
-                <p style="margin-bottom: 16px;">© 2026 DC Bots. Все права защищены.</p>
-                <p style="margin-bottom: 16px;">Настоящее лицензионное соглашение регулирует использование материалов сайта dsbot.su и программного обеспечения DC Bots.</p>
-                <h3 style="font-size: 16px; margin: 16px 0 8px;">1. Авторские права</h3>
-                <p style="color: var(--text-secondary); font-size: 14px;">Все материалы сайта являются интеллектуальной собственностью DC Bots.</p>
-                <h3 style="font-size: 16px; margin: 16px 0 8px;">2. Использование материалов</h3>
-                <p style="color: var(--text-secondary); font-size: 14px;">Запрещается копирование, распространение, модификация материалов без письменного разрешения.</p>
-                <h3 style="font-size: 16px; margin: 16px 0 8px;">3. Программное обеспечение</h3>
-                <p style="color: var(--text-secondary); font-size: 14px;">Программы распространяются на условиях платной лицензии. Запрещается декомпиляция и передача ключей третьим лицам.</p>
-                <button class="btn-idea" style="width: 100%; margin-top: 20px; background: var(--cta); color: white; border: none;" onclick="closeModal('licenseModal')">Закрыть</button>
+                <p style="margin-bottom:16px;">© 2026 DC Bots. Все права защищены.</p>
+                <p style="margin-bottom:16px;">Настоящее соглашение регулирует использование материалов сайта и ПО DC Bots.</p>
+                <h3 style="font-size:16px;margin:16px 0 8px;">1. Авторские права</h3>
+                <p style="color:var(--text-secondary);font-size:14px;">Все материалы — собственность DC Bots.</p>
+                <h3 style="font-size:16px;margin:16px 0 8px;">2. Использование</h3>
+                <p style="color:var(--text-secondary);font-size:14px;">Запрещено копирование без разрешения.</p>
+                <h3 style="font-size:16px;margin:16px 0 8px;">3. ПО</h3>
+                <p style="color:var(--text-secondary);font-size:14px;">Платная лицензия, запрет декомпиляции.</p>
+                <button style="width:100%;margin-top:20px;background:var(--cta);color:white;border:none;padding:14px;border-radius:40px;cursor:pointer;" onclick="closeModal('licenseModal')">Закрыть</button>
             </div>
         </div>
     </div>
@@ -179,82 +161,29 @@
     <footer class="footer">
         <div class="container">
             <p>© 2026 DC Bots. Бесплатные моды для игр.</p>
-            <p style="margin-top: 10px;">
-                <a href="index.html">Главная</a> |
-                <a href="news.html">Новости</a> |
-                <a href="support.html">Поддержка</a> |
-                <a href="partners.html">Партнёрам</a> |
-                <a href="#" onclick="openModal('licenseModal'); return false;">Лицензия</a>
+            <p style="margin-top:10px;">
+                <a href="index.html">Главная</a> | <a href="news.html">Новости</a> | <a href="support.html">Поддержка</a> | <a href="partners.html">Партнёрам</a> | <a href="#" onclick="openModal('licenseModal');return false;">Лицензия</a>
             </p>
         </div>
     </footer>
 
     <script>
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'flex';
-            document.body.style.overflow = 'hidden';
+        function openModal(id){document.getElementById(id).style.display='flex';document.body.style.overflow='hidden';}
+        function closeModal(id){document.getElementById(id).style.display='none';document.body.style.overflow='auto';}
+        async function loadNews(){
+            const c=document.getElementById('newsContainer');
+            try{
+                const r=await fetch('data/news.json');
+                if(!r.ok)throw new Error();
+                const n=await r.json();
+                if(!n||n.length===0){c.innerHTML='<div class="news-empty">Новостей пока нет</div>';return;}
+                c.innerHTML=n.map(i=>`<div class="news-card"><div class="news-header"><span class="news-date">${i.date}</span><span class="news-category">${i.category}</span></div><h2 class="news-title">${i.title}</h2><div class="news-content"><p>${i.description}</p>${i.text?`<p>${i.text}</p>`:''}</div>${i.links?`<div class="news-links">${i.links.steam?`<a href="${i.links.steam}" target="_blank">Steam Workshop</a>`:''}${i.links.direct?`<a href="${i.links.direct}" target="_blank">Прямая ссылка</a>`:''}</div>`:''}</div>`).join('');
+            }catch{c.innerHTML='<div class="news-empty">Новостей пока нет</div>';}
         }
-        
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        // Загрузка новостей из JSON
-        async function loadNews() {
-            const container = document.getElementById('newsContainer');
-            try {
-                const response = await fetch('data/news.json');
-                if (!response.ok) throw new Error('Файл не найден');
-                const news = await response.json();
-                
-                if (!news || news.length === 0) {
-                    container.innerHTML = '<div class="news-empty">Новостей пока нет</div>';
-                    return;
-                }
-                
-                container.innerHTML = news.map(item => `
-                    <div class="news-card">
-                        <div class="news-header">
-                            <span class="news-date">${item.date}</span>
-                            <span class="news-category">${item.category}</span>
-                        </div>
-                        <h2 class="news-title">${item.title}</h2>
-                        <div class="news-content">
-                            <p>${item.description}</p>
-                            ${item.text ? `<p>${item.text}</p>` : ''}
-                        </div>
-                        ${item.links ? `
-                            <div class="news-links">
-                                ${item.links.steam ? `<a href="${item.links.steam}" target="_blank">Steam Workshop</a>` : ''}
-                                ${item.links.direct ? `<a href="${item.links.direct}" target="_blank">Прямая ссылка</a>` : ''}
-                            </div>
-                        ` : ''}
-                    </div>
-                `).join('');
-            } catch (error) {
-                console.error('Ошибка загрузки новостей:', error);
-                container.innerHTML = '<div class="news-empty">Новостей пока нет</div>';
-            }
-        }
-        
         loadNews();
-
-        document.getElementById('openIdeaModalBtn')?.addEventListener('click', () => openModal('ideaModal'));
-        
-        window.addEventListener('click', (e) => {
-            if (e.target.classList.contains('modal')) {
-                e.target.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        });
-        
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                document.querySelectorAll('.modal').forEach(m => { m.style.display = 'none'; });
-                document.body.style.overflow = 'auto';
-            }
-        });
+        document.getElementById('openIdeaModalBtn')?.addEventListener('click',()=>openModal('ideaModal'));
+        window.addEventListener('click',e=>{if(e.target.classList.contains('modal')){e.target.style.display='none';document.body.style.overflow='auto';}});
+        document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.querySelectorAll('.modal').forEach(m=>m.style.display='none');document.body.style.overflow='auto';}});
     </script>
 </body>
 </html>
