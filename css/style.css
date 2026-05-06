@@ -197,6 +197,14 @@ h2 {
     color: var(--text);
 }
 
+.jarvis-row {
+    margin-bottom: 36px;
+}
+
+.jarvis-standalone {
+    max-width: 100%;
+}
+
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -737,6 +745,27 @@ h2 {
 .loader-wrapper.hide {
     opacity: 0;
     visibility: hidden;
+}
+
+@media (min-width: 769px) {
+    .jarvis-standalone {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        align-items: center;
+    }
+    
+    .jarvis-standalone .bot-features {
+        margin-bottom: 0;
+    }
+    
+    .jarvis-standalone .jarvis-soon {
+        grid-column: 2;
+    }
+    
+    .jarvis-standalone .bot-actions {
+        grid-column: 2;
+    }
 }
 
 @media (max-width: 768px) {
