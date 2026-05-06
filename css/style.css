@@ -1,7 +1,3 @@
-/* ============================================
-   DC BOTS — МРАЧНЫЙ ТЁМНЫЙ СТИЛЬ
-   ============================================ */
-
 * {
     margin: 0;
     padding: 0;
@@ -23,6 +19,9 @@
     --cta-hover: #5a6e80;
     --shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
     --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.4);
+    --jarvis-glow: rgba(90, 130, 180, 0.25);
+    --jarvis-border: #4a7090;
+    --jarvis-badge: #3a6080;
 }
 
 body {
@@ -58,7 +57,6 @@ h2 {
     margin-bottom: 0.75rem;
 }
 
-/* ===== ХЕДЕР ===== */
 .header {
     position: fixed;
     top: 0;
@@ -110,7 +108,6 @@ h2 {
     color: var(--text);
 }
 
-/* ===== КНОПКИ ===== */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -164,7 +161,6 @@ h2 {
     box-shadow: var(--shadow-hover);
 }
 
-/* ===== ГЛАВНЫЙ ЭКРАН ===== */
 .hero {
     padding: 150px 0 90px;
     text-align: center;
@@ -191,7 +187,6 @@ h2 {
     padding: 14px 32px;
 }
 
-/* ===== КАРТОЧКИ ПРОДУКТОВ ===== */
 .bots {
     padding: 70px 0;
 }
@@ -216,7 +211,8 @@ h2 {
     display: flex;
     flex-direction: column;
     box-shadow: var(--shadow);
-    transition: all 0.2s;
+    transition: all 0.5s ease;
+    position: relative;
 }
 
 .bot-card:hover {
@@ -301,7 +297,96 @@ h2 {
     border-color: var(--border-hover);
 }
 
-/* ===== ПРЕИМУЩЕСТВА ===== */
+.grid.has-jarvis .bot-card:not(.jarvis-card) {
+    opacity: 0.5;
+    filter: grayscale(35%);
+    transition: all 0.6s ease;
+}
+
+.grid.has-jarvis .bot-card:not(.jarvis-card):hover {
+    opacity: 0.75;
+    filter: grayscale(15%);
+}
+
+.jarvis-card {
+    border: 1px solid var(--jarvis-border);
+    box-shadow: 0 0 32px var(--jarvis-glow), 0 0 64px rgba(90, 130, 180, 0.08);
+    background: linear-gradient(145deg, #14191f 0%, #1a1f28 100%);
+    animation: jarvisPulse 3s ease-in-out infinite;
+    z-index: 2;
+}
+
+.jarvis-card:hover {
+    border-color: #5a8aaa;
+    box-shadow: 0 0 40px rgba(90, 130, 180, 0.35), 0 0 80px rgba(90, 130, 180, 0.15);
+    transform: translateY(-6px);
+}
+
+.jarvis-card .bot-features li::before {
+    color: #5a8aaa;
+}
+
+.jarvis-card p {
+    color: #bccbd8;
+}
+
+.jarvis-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: var(--jarvis-badge);
+    color: #c8ddf0;
+    padding: 5px 14px;
+    border-radius: 40px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    border: 1px solid rgba(90, 130, 180, 0.3);
+}
+
+.jarvis-soon {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #8ab0d0;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.jarvis-dot {
+    width: 8px;
+    height: 8px;
+    background: #5a8aaa;
+    border-radius: 50%;
+    animation: dotPulseJarvis 1.5s infinite;
+}
+
+.btn-jarvis {
+    background: transparent;
+    border: 1px solid var(--jarvis-border);
+    color: #c8ddf0;
+    font-weight: 500;
+    padding: 12px 22px;
+    box-shadow: 0 0 12px rgba(90, 130, 180, 0.10);
+    border-radius: 40px;
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.btn-jarvis:hover {
+    background: rgba(90, 130, 180, 0.12);
+    border-color: #5a8aaa;
+    box-shadow: 0 0 20px rgba(90, 130, 180, 0.20);
+    color: #fff;
+}
+
 .features {
     padding: 70px 0;
     background: transparent;
@@ -332,7 +417,6 @@ h2 {
     font-size: 14px;
 }
 
-/* ===== ПОДДЕРЖКА АВТОРА ===== */
 .support-author {
     padding: 60px 0;
     border-top: 1px solid var(--border);
@@ -394,7 +478,6 @@ h2 {
     margin-top: 18px;
 }
 
-/* ===== МОДАЛЬНЫЕ ОКНА ===== */
 .modal {
     display: none;
     position: fixed;
@@ -504,7 +587,6 @@ h2 {
     background: var(--cta-hover);
 }
 
-/* ===== ДЕТАЛИ В МОДАЛКАХ ===== */
 .detail-section {
     margin-bottom: 20px;
 }
@@ -550,7 +632,6 @@ h2 {
     margin-bottom: 5px;
 }
 
-/* ===== ФУТЕР ===== */
 .footer {
     border-top: 1px solid var(--border);
     padding: 40px 0;
@@ -571,7 +652,6 @@ h2 {
     text-decoration: underline;
 }
 
-/* ===== ЛОАДЕР ===== */
 .loader-wrapper {
     position: fixed;
     top: 0;
@@ -636,12 +716,29 @@ h2 {
     }
 }
 
+@keyframes jarvisPulse {
+    0%, 100% {
+        box-shadow: 0 0 32px var(--jarvis-glow), 0 0 64px rgba(90, 130, 180, 0.08);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(90, 130, 180, 0.35), 0 0 80px rgba(90, 130, 180, 0.15);
+    }
+}
+
+@keyframes dotPulseJarvis {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
 .loader-wrapper.hide {
     opacity: 0;
     visibility: hidden;
 }
 
-/* ===== АДАПТИВ ===== */
 @media (max-width: 768px) {
     .container {
         padding: 0 18px;
